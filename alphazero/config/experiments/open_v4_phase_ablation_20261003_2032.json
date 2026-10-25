@@ -1,0 +1,61 @@
+{
+  "schema": "junqi-phase-ablation-plan-1",
+  "preregistered_at": "2026-10-03T12:42:27.928432+00:00",
+  "directory": "runs/open_junqi_v4_phase_ablation_20261003_2032",
+  "parent_config": "config/open_junqi_v4_repair_pilot.json",
+  "parent_iteration": 20,
+  "parent_checkpoint": {
+    "path": "checkpoints\\learner_000020.pt",
+    "sha256": "aa0706f07b50d7f146a3a8b650f8888bf9fc4219ccd42658370973c87279636c",
+    "model_hash": "9cc5f08f6ed91546616b899db81e20bcb014d57665d349d0e33d65cb2c2bc9c1",
+    "iteration": 20
+  },
+  "source": {
+    "python\\junqi_open_v4\\arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python\\junqi_open_v4\\config.py": "b58a87198414d043be931ef1bd19a4be7a4b09bcd7fcd35137d2219a369b00b1",
+    "python\\junqi_open_v4\\games.py": "5de350efbdbac4dc7424db6ea93ce5348f7495d1d1dc5ccd41c969b0e795a67c",
+    "python\\junqi_open_v4\\layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python\\junqi_open_v4\\learner.py": "ef5a182a6a77051497b486d8e4f80069e71b6c5c689869cce29b757dda261a07",
+    "python\\junqi_open_v4\\pipeline.py": "9326051547671df1ef675b3253de8ffbd4b1a3490bbf5db32cbd96dc8f122d1a",
+    "python\\junqi_open_v4\\teachers.py": "7fded99345006425cc04ce332214cd7d6cba4c181e4ab5dea920a2d9bf5a29d5",
+    "python\\junqi_open_v4\\__init__.py": "f1ff7c0abac69104737e89fdf0c927c7b91ca1994f3cfccd986c8dae9d62437c",
+    "python\\junqi_search_v3\\search.py": "beaf8b8461c2a52cf0d745336c962c327f50ce89e877df89add7db4ecef51fb4",
+    "python\\junqi_search_v3\\recovery.py": "66f7d011440047d833b794cbb202c1a5c39999ff5a4e4796184aff3c87734b6c",
+    "python\\junqi_search_v3\\loop.py": "30b19b9b3caa280219447f135d72f9f6e30018bfb9851c84ca1a5392c2b5df72",
+    "python\\junqi_az\\model.py": "7c3107408245e62ed4a97433e779f6d0cb2c4d084dc6bda67104edb2d7befaa7",
+    "build\\JunqiAZ.cp310-win_amd64.pyd": "c9b67d5aa5a2a343f3f655edee9e49fb1823762ddea9f5a7dc847eb81f372bba"
+  },
+  "replay": [
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000018.npz",
+      "sha256": "3c65620f60b4fb8a311a503764b4e75bd01ef5c03684801120781e6ef0dc3a34",
+      "iteration": 18
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000019.npz",
+      "sha256": "3f9807bbf78f53d82d3e2528dbfd168b9a617561eca9462996f2916dcfbd304f",
+      "iteration": 19
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000020.npz",
+      "sha256": "9cd9825aa01ea1c3140632bdb5473b11d3ab0b4acdf39bc36ed51a618953ece1",
+      "iteration": 20
+    }
+  ],
+  "updates": 384,
+  "evaluation_families": 32,
+  "evaluation_seed": 2026072052,
+  "variants": [
+    "PPV continuation control",
+    "policy only"
+  ],
+  "hypothesis": "Teacher strength stagnates while weak-network duel strength improves; shared Policy/Value training may inhibit useful policy learning. Replace Value updates with additional Policy updates at fixed total update budget.",
+  "held_constant": "parent model/optimizer/scheduler/counters/RNG, ordered batches from immutable training replay, layout manifest, learning rate, inference and simulation budgets",
+  "training_role": "train only; original paired-family internal holdout retained; no dev or final data",
+  "selection": "Prefer policy route only if paired policy/control duel lower CI95 > 0.5, teacher paired delta lower CI95 > 0 for both frozen teachers, and teacher noninferiority to parent within 5pp. Diagnostic result does not promote production roles.",
+  "stop_policy": "Honor original supervision/STOP and experiment STOP; preserve checkpoints every 64 updates",
+  "optimizer_reset": false,
+  "scheduler_reset": false,
+  "rng_reset": false,
+  "production_role_mutations": false
+}

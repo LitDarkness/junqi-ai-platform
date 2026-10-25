@@ -1,0 +1,95 @@
+{
+  "schema": "junqi-frozen-confirmation-plan-1",
+  "preregistered_at": "2026-10-03T14:32:13.154611+00:00",
+  "parent_config": "config/open_junqi_v4_repair_pilot.json",
+  "directory": "runs/open_junqi_v4_fresh_confirmation_20261003",
+  "parent_current": {
+    "iteration": 20,
+    "contract_hash": "9bc077d7de051a9b703f7a2fa68781172b6a0d333f3c6a7ed726b2015ba09bbe",
+    "learner": {
+      "path": "checkpoints\\learner_000020.pt",
+      "sha256": "aa0706f07b50d7f146a3a8b650f8888bf9fc4219ccd42658370973c87279636c",
+      "model_hash": "9cc5f08f6ed91546616b899db81e20bcb014d57665d349d0e33d65cb2c2bc9c1",
+      "iteration": 20
+    },
+    "actor": {
+      "path": "checkpoints\\actor_000009.pt",
+      "sha256": "ac295fca2615515e979ded277ebff44ae781d60e52fdcf0b9508a3536e602f69",
+      "model_hash": "e8ae1c5a13c87dca340fe08b9d5bd5a62781797d877ac4a1a5a3ada6e13d6d6d",
+      "iteration": 9
+    },
+    "champion": {
+      "path": "checkpoints\\champion_000009.pt",
+      "sha256": "f50817059d72555db5aa785c60c5ec1915b3adc51c41695c06760aa4c02cb044",
+      "model_hash": "e8ae1c5a13c87dca340fe08b9d5bd5a62781797d877ac4a1a5a3ada6e13d6d6d",
+      "iteration": 9
+    }
+  },
+  "source": {
+    "python\\junqi_open_v4\\arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python\\junqi_open_v4\\config.py": "b58a87198414d043be931ef1bd19a4be7a4b09bcd7fcd35137d2219a369b00b1",
+    "python\\junqi_open_v4\\games.py": "5de350efbdbac4dc7424db6ea93ce5348f7495d1d1dc5ccd41c969b0e795a67c",
+    "python\\junqi_open_v4\\layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python\\junqi_open_v4\\learner.py": "ef5a182a6a77051497b486d8e4f80069e71b6c5c689869cce29b757dda261a07",
+    "python\\junqi_open_v4\\pipeline.py": "9326051547671df1ef675b3253de8ffbd4b1a3490bbf5db32cbd96dc8f122d1a",
+    "python\\junqi_open_v4\\teachers.py": "7fded99345006425cc04ce332214cd7d6cba4c181e4ab5dea920a2d9bf5a29d5",
+    "python\\junqi_open_v4\\__init__.py": "f1ff7c0abac69104737e89fdf0c927c7b91ca1994f3cfccd986c8dae9d62437c",
+    "python\\junqi_search_v3\\search.py": "beaf8b8461c2a52cf0d745336c962c327f50ce89e877df89add7db4ecef51fb4",
+    "python\\junqi_search_v3\\recovery.py": "66f7d011440047d833b794cbb202c1a5c39999ff5a4e4796184aff3c87734b6c",
+    "python\\junqi_search_v3\\loop.py": "30b19b9b3caa280219447f135d72f9f6e30018bfb9851c84ca1a5392c2b5df72",
+    "python\\junqi_az\\model.py": "7c3107408245e62ed4a97433e779f6d0cb2c4d084dc6bda67104edb2d7befaa7",
+    "build\\JunqiAZ.cp310-win_amd64.pyd": "c9b67d5aa5a2a343f3f655edee9e49fb1823762ddea9f5a7dc847eb81f372bba"
+  },
+  "participants": {
+    "parent": {
+      "path": "runs\\open_junqi_v4_repair_pilot\\checkpoints\\learner_000020.pt",
+      "sha256": "aa0706f07b50d7f146a3a8b650f8888bf9fc4219ccd42658370973c87279636c",
+      "model_hash": "9cc5f08f6ed91546616b899db81e20bcb014d57665d349d0e33d65cb2c2bc9c1",
+      "iteration": 20
+    },
+    "parent_repeat": {
+      "path": "runs\\open_junqi_v4_repair_pilot\\checkpoints\\learner_000020.pt",
+      "sha256": "aa0706f07b50d7f146a3a8b650f8888bf9fc4219ccd42658370973c87279636c",
+      "model_hash": "9cc5f08f6ed91546616b899db81e20bcb014d57665d349d0e33d65cb2c2bc9c1",
+      "iteration": 20
+    },
+    "champion": {
+      "path": "runs\\open_junqi_v4_repair_pilot\\checkpoints\\champion_000009.pt",
+      "sha256": "f50817059d72555db5aa785c60c5ec1915b3adc51c41695c06760aa4c02cb044",
+      "model_hash": "e8ae1c5a13c87dca340fe08b9d5bd5a62781797d877ac4a1a5a3ada6e13d6d6d",
+      "iteration": 9
+    },
+    "control": {
+      "path": "runs\\open_junqi_v4_fresh_data_20261003\\control\\checkpoints\\learner_stage_000006.pt",
+      "sha256": "ca1e095c0daf0079421d2d38149fbbf53db9b77585eae1241f581748e29a2cf3",
+      "model_hash": "d36d7670fd9959b09e1418b24ef5032be554efde69df0b69acee62251d43d939",
+      "iteration": 26
+    },
+    "candidate": {
+      "path": "runs\\open_junqi_v4_fresh_data_20261003\\fresh\\checkpoints\\learner_stage_000006.pt",
+      "sha256": "baa0d4f5833c0c73ca8e19cfe687678af9a0069688fe0d76543291edb99a8481",
+      "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+      "iteration": 26
+    }
+  },
+  "suite": {
+    "path": "runs\\open_junqi_v4_repair_pilot\\development\\suite.json",
+    "sha256": "94bd9a038b6dd2652e4f5bbfd1bb7021e785d745ba1877f01fbdd880fdd3b88e"
+  },
+  "evaluation_families": 64,
+  "evaluation_seed": 2026100311,
+  "duplicate_control_tolerance": 0.02,
+  "purpose": "Exploratory full development recheck of fresh-data candidate; partial experiment strict route selection failed, but candidate beat matched control and parent in direct duels and beat control on teacher paired scores.",
+  "development_reuse_caveat": "All 64 existing development family pairs include the 32 pairs used in the earlier screen. This is full development rechecking, not a second independent test or a final evaluation. Original 32-family strict selection remains false.",
+  "prior_result": {
+    "path": "runs\\open_junqi_v4_fresh_data_20261003\\RESULTS.json",
+    "sha256": "a74305cf97bacda93c2eb51831b8d969f415c138c6ae389883b5109711b2a3ca",
+    "fresh_route_preferred": false
+  },
+  "selection": "Confirm fresh route only if candidate teacher paired CI95 lower bounds >0 versus parent and control at all 64 families, direct candidate/parent and candidate/control CI95 lower bounds >0.5, existing champion gate passes versus champion9, and duplicate point differences <=2pp. No promotion during this evaluator.",
+  "training_updates": 0,
+  "simulations": 64,
+  "stop_policy": "Honor original and experiment STOP; do not clear",
+  "promotion": "none; preserve all source checkpoints and original roles",
+  "tool_sha256": "79cf97d7f2e8ab6cc0e5fbf03b4d4faf1a701dd00cec047074ae49320372b1cf"
+}

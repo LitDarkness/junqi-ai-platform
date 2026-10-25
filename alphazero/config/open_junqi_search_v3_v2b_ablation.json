@@ -1,0 +1,8 @@
+{
+  "extends": "open_junqi_search_v3.json",
+  "run_directory": "runs/open_junqi_search_v3_v2b_trunk_ablation",
+  "initialization": "v2b_trunk_ablation",
+  "data": {
+    "weak_checkpoint": "runs/open_junqi_search_v3_v2b_trunk_ablation/checkpoints/initial_v2b_trunk_ablation.pt"
+  }
+}

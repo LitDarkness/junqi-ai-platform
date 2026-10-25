@@ -1,0 +1,222 @@
+{
+  "schema": "junqi-teacher-target-plan-1",
+  "preregistered_at": "2026-10-03T19:28:40.980379+00:00",
+  "directory": "runs/open_junqi_v4_teacher_targets_20261004",
+  "parent_config": "config/open_junqi_v4_fresh_continuation.json",
+  "parent_config_hash": "8df69a25ded4b71ce3ba86dcc8ceda3eb1203ecd68c43a4a131a9e6779969579",
+  "source_checkpoint": {
+    "path": "runs\\open_junqi_v4_fresh_continuation\\checkpoints\\champion_000026.pt",
+    "sha256": "ec539bed4e112d28707adaef5b75c0c493b034e0c037f020c57fed9f6c447041",
+    "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+    "iteration": 26
+  },
+  "source_counters": {
+    "iteration": 26,
+    "attempted_updates": 1664,
+    "effective_updates": 1664,
+    "policy_updates": 1110,
+    "value_updates": 554,
+    "backtracking_rejections": 0
+  },
+  "frozen_runs": [
+    {
+      "directory": "runs\\open_junqi_v4_repair_pilot",
+      "current": {
+        "iteration": 20,
+        "contract_hash": "9bc077d7de051a9b703f7a2fa68781172b6a0d333f3c6a7ed726b2015ba09bbe",
+        "learner": {
+          "path": "checkpoints\\learner_000020.pt",
+          "sha256": "aa0706f07b50d7f146a3a8b650f8888bf9fc4219ccd42658370973c87279636c",
+          "model_hash": "9cc5f08f6ed91546616b899db81e20bcb014d57665d349d0e33d65cb2c2bc9c1",
+          "iteration": 20
+        },
+        "actor": {
+          "path": "checkpoints\\actor_000009.pt",
+          "sha256": "ac295fca2615515e979ded277ebff44ae781d60e52fdcf0b9508a3536e602f69",
+          "model_hash": "e8ae1c5a13c87dca340fe08b9d5bd5a62781797d877ac4a1a5a3ada6e13d6d6d",
+          "iteration": 9
+        },
+        "champion": {
+          "path": "checkpoints\\champion_000009.pt",
+          "sha256": "f50817059d72555db5aa785c60c5ec1915b3adc51c41695c06760aa4c02cb044",
+          "model_hash": "e8ae1c5a13c87dca340fe08b9d5bd5a62781797d877ac4a1a5a3ada6e13d6d6d",
+          "iteration": 9
+        }
+      }
+    },
+    {
+      "directory": "runs\\open_junqi_v4_fresh_continuation",
+      "current": {
+        "iteration": 35,
+        "contract_hash": "5e45a8889359b9c12972f5466193770e28eda038e5e0374a823390e6f063e80b",
+        "learner": {
+          "path": "checkpoints\\learner_000035.pt",
+          "sha256": "1bd765464eae26a7aa6a5e2c8134f75f211d4c4b89b873fc8e77e922a8013fca",
+          "model_hash": "ca42913256d47445cc5485306c3a3d8bd0e4a930f24be78cec92933e07eec829",
+          "iteration": 35
+        },
+        "actor": {
+          "path": "checkpoints\\actor_000026.pt",
+          "sha256": "94e0da94c965d9c67c22f5657fac2df6e419492af3c4432cf27a2b7c0f668dca",
+          "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+          "iteration": 26
+        },
+        "champion": {
+          "path": "checkpoints\\champion_000026.pt",
+          "sha256": "ec539bed4e112d28707adaef5b75c0c493b034e0c037f020c57fed9f6c447041",
+          "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+          "iteration": 26
+        }
+      }
+    }
+  ],
+  "source": {
+    "python\\junqi_open_v4\\arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python\\junqi_open_v4\\config.py": "b58a87198414d043be931ef1bd19a4be7a4b09bcd7fcd35137d2219a369b00b1",
+    "python\\junqi_open_v4\\games.py": "5de350efbdbac4dc7424db6ea93ce5348f7495d1d1dc5ccd41c969b0e795a67c",
+    "python\\junqi_open_v4\\layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python\\junqi_open_v4\\learner.py": "ef5a182a6a77051497b486d8e4f80069e71b6c5c689869cce29b757dda261a07",
+    "python\\junqi_open_v4\\pipeline.py": "9326051547671df1ef675b3253de8ffbd4b1a3490bbf5db32cbd96dc8f122d1a",
+    "python\\junqi_open_v4\\teachers.py": "7fded99345006425cc04ce332214cd7d6cba4c181e4ab5dea920a2d9bf5a29d5",
+    "python\\junqi_open_v4\\__init__.py": "f1ff7c0abac69104737e89fdf0c927c7b91ca1994f3cfccd986c8dae9d62437c",
+    "python\\junqi_search_v3\\search.py": "beaf8b8461c2a52cf0d745336c962c327f50ce89e877df89add7db4ecef51fb4",
+    "python\\junqi_search_v3\\recovery.py": "66f7d011440047d833b794cbb202c1a5c39999ff5a4e4796184aff3c87734b6c",
+    "python\\junqi_search_v3\\loop.py": "30b19b9b3caa280219447f135d72f9f6e30018bfb9851c84ca1a5392c2b5df72",
+    "python\\junqi_az\\model.py": "7c3107408245e62ed4a97433e779f6d0cb2c4d084dc6bda67104edb2d7befaa7",
+    "build\\JunqiAZ.cp310-win_amd64.pyd": "c9b67d5aa5a2a343f3f655edee9e49fb1823762ddea9f5a7dc847eb81f372bba"
+  },
+  "teachers": [
+    {
+      "name": "0082_gemini_20260716_070923_701_p02_w02",
+      "candidate": "../teachers/082\\candidate.py",
+      "source_sha256": "c6881263cffae67ed1ff1fd77fae78ba9b54dac1a5246b872cca5f3a0320d950",
+      "binary_sha256": "351eb76c2aaed03c619e937ba330d7c95ba1a83617797a9a33d2171b1a83e663",
+      "budget": "candidate's unchanged native budget; elapsed time measured"
+    },
+    {
+      "name": "0084_gemini_20260716_122831_880_p02_w02",
+      "candidate": "../teachers/084\\candidate.py",
+      "source_sha256": "c6881263cffae67ed1ff1fd77fae78ba9b54dac1a5246b872cca5f3a0320d950",
+      "binary_sha256": "f5b27185ca0a9c03799269306e4256fa972a49bc6fc4869dfe56cc5305a08b23",
+      "budget": "candidate's unchanged native budget; elapsed time measured"
+    }
+  ],
+  "layout_manifest_hash": "0285d27b62da8e3ce215a8d9b64581b1de7f759d27edfeff2dfbe923ca7bdf20",
+  "suite": {
+    "path": "runs\\open_junqi_v4_fresh_continuation\\development\\suite.json",
+    "sha256": "94bd9a038b6dd2652e4f5bbfd1bb7021e785d745ba1877f01fbdd880fdd3b88e"
+  },
+  "validation_replay": [
+    {
+      "iteration": 24,
+      "path": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000024.npz",
+      "sha256": "e56ca19a49e8c1ac6efe8e50f4391bc237cfe7aec356ffd3d8239f82d9939ada",
+      "metadata_sha256": "e6b8f4e9d3c4df0ee6a354ce4d4df8f4f9bf1883c5b87bd78f4b3774b87ff758"
+    },
+    {
+      "iteration": 25,
+      "path": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000025.npz",
+      "sha256": "873a3fb84665f0d0810adf01a63aeae27ff6d4b47b48842477c4c966d5e9f743",
+      "metadata_sha256": "c97b7c15b1a21bc7e0e1f45f4bfa95ca560afe757ad423b3f6544611ff553a21"
+    },
+    {
+      "iteration": 26,
+      "path": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000026.npz",
+      "sha256": "c4fc0c3ba40732cbca5721eaacbd97b84d3a01d9ac43b2175e93920c9df8563d",
+      "metadata_sha256": "da3774252e851c3eeda2cafa2861feeaefe87e68870f8309881cb113e571549c"
+    }
+  ],
+  "replay_sources": {
+    "initial_000025": {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000025.npz",
+      "sha256": "873a3fb84665f0d0810adf01a63aeae27ff6d4b47b48842477c4c966d5e9f743",
+      "metadata": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000025.json",
+      "metadata_sha256": "c97b7c15b1a21bc7e0e1f45f4bfa95ca560afe757ad423b3f6544611ff553a21"
+    },
+    "initial_000026": {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000026.npz",
+      "sha256": "c4fc0c3ba40732cbca5721eaacbd97b84d3a01d9ac43b2175e93920c9df8563d",
+      "metadata": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000026.json",
+      "metadata_sha256": "da3774252e851c3eeda2cafa2861feeaefe87e68870f8309881cb113e571549c"
+    },
+    "new_000045": {
+      "path": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000045.npz",
+      "sha256": "19ba9224dbe0afdabe376cd647a9e11adfd79de9866f110afee80396ba4243d7",
+      "metadata": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000045.json",
+      "metadata_sha256": "1ca2c5543a67fde84e4ca7788b5e53d324cd31036534da1aa321770f53d73971"
+    },
+    "new_000046": {
+      "path": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000046.npz",
+      "sha256": "c7b7f7d0cada8929559d7c2dd1ce6bb02ccc5bec080c0fee3bcb1252335eb5bb",
+      "metadata": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000046.json",
+      "metadata_sha256": "3185e0aa3151480635783ccdb87e4387235adb7a3621adf6515f09c4acde141d"
+    },
+    "new_000047": {
+      "path": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000047.npz",
+      "sha256": "3d0cec23c349c450e2e1a5a03509233f03c3fecdccc3c673fb2e3d52e4e66ea8",
+      "metadata": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000047.json",
+      "metadata_sha256": "a1b546e4c3ecd024cf042285bc1e65a74a3b30d438d41a0baf9f2b38d1335a5f"
+    },
+    "new_000048": {
+      "path": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000048.npz",
+      "sha256": "ea2a80b75a3d8b74704347afd1a80f51b80828e6b6c8483d4fcce6e89022f300",
+      "metadata": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000048.json",
+      "metadata_sha256": "29e6ab4c30eaa0bf3c10e8651d93eee16fba4cc2358b5e19f4b0909712d6bc77"
+    },
+    "new_000049": {
+      "path": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000049.npz",
+      "sha256": "e71bec24ec08c9b33b98a096e50dde3c364a732e7265e4c3079fa06f8b0783dd",
+      "metadata": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000049.json",
+      "metadata_sha256": "5bc0f3a5424beb9ab93fa3a9c5fc908d99bde6504e9bcd2f1c1020fbb66edea1"
+    },
+    "new_000050": {
+      "path": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000050.npz",
+      "sha256": "8f3367021cca2819883754a5cdd508e96f01c5daefb8b4fdbb44f775dd518ff8",
+      "metadata": "runs\\open_junqi_v4_search_training_20261004\\candidate\\replay\\collection_000050.json",
+      "metadata_sha256": "7755a2cafffcb7899aaf07c450f291dd97623d05c9a5ba25411c37e604d90774"
+    }
+  },
+  "evidence_files": {
+    "runs\\open_junqi_v4_search_budgets_20261004\\RESULTS.json": "81705a3e8d1983c0cd6caa77435a1059b2a1a32264bdcecfb27e0f4accf319c3",
+    "runs\\open_junqi_v4_search_budgets_20261004\\arena.json": "a1e8ded56c8c034871be7fc3c4272d3c4c643f4f0c730634d3ce595a9b6c2e06",
+    "runs\\open_junqi_v4_search_budgets_20261004\\CONTRACT.json": "a6bc8053eba7f039b1acb864c20abce26c6523602531b23d0b464ba344c207f6",
+    "tools\\evaluate_open_v4_search_budgets.py": "dde05baee6513d24129ca0ee4dce90fc1b54882e5134880c2fd1d7eca8e23a77",
+    "tools\\open_v4_experiment_evidence.py": "a94ae30371e981b88ab2f4fe9fb397fb92c729dc447b199bb6606f226fd5ec81",
+    "runs\\open_junqi_v4_search_confirmation_20261004\\RESULTS.json": "31cbc153245d4c5a23ae532105e9edf2477af528d1ce7098191e7f8ea7e8c150",
+    "runs\\open_junqi_v4_search_confirmation_20261004\\arena.json": "d132c336c143004e26fa056d9c23c016456bdc0f35b17aad27060a45837b9eac",
+    "runs\\open_junqi_v4_search_confirmation_20261004\\CONTRACT.json": "8bb3910bb329fda4920865d0d36ddb452a3eb72ba684633c046ea32a071773f7",
+    "tools\\evaluate_open_v4_search_confirmation.py": "60e89df7e430013018d4dc53b6c1d3bca5ff34465dca75f2f3c9045a17b7478a",
+    "tools\\fork_open_v4_qualified.py": "6ed4f4566f445f129c5a16784f527c3360fdaea1751b90c18c18447cb5b34e3f",
+    "tools\\run_open_v4_fresh_data.py": "6026196b0bfddba22062e160afd8c46c20939d84e34dbebf6748309ae5ef41d8",
+    "runs\\open_junqi_v4_search_training_20261004\\RESULTS.json": "5673eb82d52d8f44bb2d41b8fdbce56cad790c119761b83583e94c4c60184184",
+    "runs\\open_junqi_v4_search_training_20261004\\CONTRACT.json": "58c6fc57de3597accfefbc35c66623d0400aa55e3932e66da2ec692111da48f2",
+    "runs\\open_junqi_v4_search_training_20261004\\arena_primary.json": "533d9e8fe3c08b29ed9c3a8093d9f37a827e83033d1c98fc1b601cb78a9a858a",
+    "runs\\open_junqi_v4_search_training_20261004\\arena_secondary.json": "d1971880c87afdff417d18ef45c35b640920304e0ec1975be28563184d5bb52c",
+    "runs\\open_junqi_v4_search_training_20261004\\PROGRESS.json": "08fdcc0800e1e0dbfeae57925d16134b1ebfb704d5cdc1a8487c3a304d1249c2",
+    "tools\\run_open_v4_search_training.py": "c528b62640ae85f7e6d04f358032959118131a94f7b348dc277debfa54d300f7"
+  },
+  "stop_paths": [
+    "runs/open_junqi_v4_repair_pilot/supervision/STOP",
+    "runs/open_junqi_v4_fresh_continuation/supervision/STOP",
+    "runs/open_junqi_v4_fresh_data_20261003/STOP",
+    "runs/open_junqi_v4_fresh_confirmation_20261003/STOP",
+    "runs\\open_junqi_v4_search_budgets_20261004\\STOP",
+    "runs\\open_junqi_v4_search_confirmation_20261004\\STOP",
+    "runs\\open_junqi_v4_search_training_20261004\\STOP"
+  ],
+  "stages": 6,
+  "updates_per_stage": 64,
+  "evaluation_budget": 256,
+  "evaluation_families": 64,
+  "evaluation_seed": 2026100404,
+  "duplicate_control_tolerance": 0.02,
+  "hypothesis": "Weak selfplay search policy labels may reward network-specific play. Test frozen strong-teacher sparse hard labels at identical history-safe selfplay states, preserving all trajectories, WDL, batches and complete starting state.",
+  "changed_factor": "Only sample.visits for noncycle selfplay states becomes a frozen teacher legal onehot. Existing teacher labels and history-sensitive selfplay targets stay identical; raw_visits remain original search counts.",
+  "label_guard": "Rebuild exact native train layout/history, check full state hash/features/legal actions/repetition and real terminal WDL before deriving labels. Board-only teacher cannot supply a history-sensitive override.",
+  "data_budget": "Replay exactly the same eight frozen training shards/windows as the prior256 candidate; both variants384 PPV updates from complete26. No fresh game count claim and no development/final data.",
+  "selection": "Full64 matched256 development: candidate gains over both control and qualified parent, both teachers paired CI95 lower>0, both direct-duel CI95 lower>.5, duplicate<=2pp, unchanged full champion gate. No automatic promotion or threshold changes.",
+  "negative_preserved": "Prior stronger-search data route false; candidate19.47% versus control28.45% on082,paired-8.98pp[-14.84,-3.32]. Parent gain not confirmed. No adoption of either unqualified32 checkpoint.",
+  "failure_policy": "No automatic retries; inspect committed progress and logs before one explicit --resume. Uncommitted shards/checkpoints must not be overwritten.",
+  "development_caveat": "Repeated development corpus; exploratory optimization, not independent final validation.",
+  "prepare_tool_sha256": "3b4e2b236fc937af8cbaf581237525f702b1300b88faa5e3b4b3bbd690856b44"
+}

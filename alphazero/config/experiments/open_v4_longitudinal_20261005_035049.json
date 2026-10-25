@@ -1,0 +1,304 @@
+{
+  "schema": "junqi-longitudinal-evaluation-1",
+  "registered_at": "2026-10-05T03:50:50.132515+00:00",
+  "directory": "runs/open_junqi_v4_longitudinal_20261005_035049",
+  "authorization": "User requested historical-self head-to-head longitudinal assessment and judgment about further training. Evaluation only; training stays paused.",
+  "config": "config/experiments/open_v4_root_explore_base_20261004_214715.json",
+  "config_sha256": "a4fa269616e98d5d57e35bccb51ff4a3928cc6a9f6f9a36a43eb21b729c97b5f",
+  "participants": {
+    "old150": {
+      "path": "runs/open_junqi_search_v3_strength_continuation/checkpoints/loop_iteration_000150.pt",
+      "sha256": "b0003b26bcaee9571a1ff166b960800a5a5b511ad82cbc446f659f0fb408a9f3",
+      "model_hash": "1780e1f2c62b888f3e82bf2a311d21214ad0348083695e56c250bc2c266e4a95",
+      "iteration": 150,
+      "namespace": "v3",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "champ26": {
+      "path": "runs/open_junqi_v4_fresh_continuation/checkpoints/champion_000026.pt",
+      "sha256": "ec539bed4e112d28707adaef5b75c0c493b034e0c037f020c57fed9f6c447041",
+      "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+      "iteration": 26,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "source38": {
+      "path": "runs/open_junqi_v4_tactical_training_20261004_065605/control/checkpoints/learner_stage_000006.pt",
+      "sha256": "cc97ec996c2ca856bf81f2d18327afdcdea53f213d0cfc8def3414929c69bf8f",
+      "model_hash": "583dd9ca60e409c9ba7260d9dd6434f42bd91096771e49122a0f0cb43d271f29",
+      "iteration": 38,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "candidate62": {
+      "path": "runs/open_junqi_v4_long_behavior_20261004_081501/candidate/checkpoints/learner_stage_000024.pt",
+      "sha256": "94d7c58799a5b1c3a5f42fa195f73bbc8927983518ae287d756fcdfec288ca87",
+      "model_hash": "07a9fde1feb9c89264f57ba66f0fe48f388480271fd57c0c36e4e20eeb293535",
+      "iteration": 62,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "control86": {
+      "path": "runs/open_junqi_v4_late_noise_factor_20261004_143905/control/checkpoints/learner_stage_000024.pt",
+      "sha256": "ae5750f4d38e917a83d6b673e00792fc95d73ffdb9d7a5b63d2638006f640136",
+      "model_hash": "0fb5d414af52c13c0c28902a6f06f4e4d51e332c4c4695080ff9a52ec37b2a00",
+      "iteration": 86,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "control110": {
+      "path": "runs/open_junqi_v4_actor_policy_20261004_184157/control/checkpoints/learner_stage_000024.pt",
+      "sha256": "1fb925bd5f6922ef955cbe9a8cb0b832af2357ef66d1e2d60e11b41204e1617d",
+      "model_hash": "b27f3a837e91064fc242e225121444c39fcf11eb562d514c197ed7196e933ed5",
+      "iteration": 110,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "control134": {
+      "path": "runs/open_junqi_v4_root_explore_20261004_214715/control/checkpoints/learner_stage_000024.pt",
+      "sha256": "adc23cd77310299bba8746870740cb37586652da130faca678167a1126dced3b",
+      "model_hash": "6a4a2e12eb0b57e30de825fdb2a43143bee9424a5000691c35b7e761f5baa9d3",
+      "iteration": 134,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "candidate134": {
+      "path": "runs/open_junqi_v4_root_explore_20261004_214715/candidate/checkpoints/learner_stage_000024.pt",
+      "sha256": "3b2d6565cff22ea01ba6a308a13bb7ef5e7c9d824f411950cb83cefcec4f0c0f",
+      "model_hash": "66eef13e70003a334ea98fe525179422495971c4b6f6c9b9fa0e6dd5eafae78b",
+      "iteration": 134,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    },
+    "repeat134": {
+      "path": "runs/open_junqi_v4_root_explore_20261004_214715/candidate/checkpoints/learner_stage_000024.pt",
+      "sha256": "3b2d6565cff22ea01ba6a308a13bb7ef5e7c9d824f411950cb83cefcec4f0c0f",
+      "model_hash": "66eef13e70003a334ea98fe525179422495971c4b6f6c9b9fa0e6dd5eafae78b",
+      "iteration": 134,
+      "namespace": "v4",
+      "leaf_value_scale": 0.9076346023345448,
+      "complete_state_fields": [
+        "model",
+        "optimizer",
+        "scheduler",
+        "rng",
+        "counters",
+        "config",
+        "leaf_value_scale"
+      ]
+    }
+  },
+  "history": [
+    "old150",
+    "champ26",
+    "source38",
+    "candidate62",
+    "control86",
+    "control110"
+  ],
+  "matchups": [
+    [
+      "control134",
+      "old150"
+    ],
+    [
+      "control134",
+      "champ26"
+    ],
+    [
+      "control134",
+      "source38"
+    ],
+    [
+      "control134",
+      "candidate62"
+    ],
+    [
+      "control134",
+      "control86"
+    ],
+    [
+      "control134",
+      "control110"
+    ],
+    [
+      "candidate134",
+      "old150"
+    ],
+    [
+      "candidate134",
+      "champ26"
+    ],
+    [
+      "candidate134",
+      "source38"
+    ],
+    [
+      "candidate134",
+      "candidate62"
+    ],
+    [
+      "candidate134",
+      "control86"
+    ],
+    [
+      "candidate134",
+      "control110"
+    ],
+    [
+      "candidate134",
+      "control134"
+    ],
+    [
+      "repeat134",
+      "control86"
+    ]
+  ],
+  "budgets": [
+    0,
+    64
+  ],
+  "suite": {
+    "path": "runs/open_junqi_v4_fresh_continuation/development/suite.json",
+    "sha256": "94bd9a038b6dd2652e4f5bbfd1bb7021e785d745ba1877f01fbdd880fdd3b88e",
+    "states_hash": "6f696de7af6d064f3c10d90dd095262ffeac4b77d11e19f38f0104987924c2d4",
+    "families": 64
+  },
+  "evaluation_seed": 2026100501,
+  "physical_batch": 32,
+  "precision": "BF16",
+  "cpuct": 1.5,
+  "root_noise": false,
+  "guard": false,
+  "forced_exploration": false,
+  "cache": false,
+  "tree_reuse": false,
+  "planned_games": 9072,
+  "comparison": "same development starts, both colors, family-clustered; bare and64 evaluated separately",
+  "primary_endpoints": [
+    [
+      "candidate134",
+      "control86",
+      64
+    ],
+    [
+      "control134",
+      "control86",
+      64
+    ]
+  ],
+  "primary_ci_level": 0.975,
+  "primary_bootstrap_resamples": 20000,
+  "continuation_judgment": "Research continuation signal only if a primary97.5%CI lower>50% and that branch's champ26 head-to-head95%CI lower>50%. Otherwise present inconclusive/regression. No production promotion, no automatic training startup. Search teacher and original promotion gates unchanged.",
+  "secondary_endpoints": "Other historical matches, same-stage duel and bare; descriptive95% intervals, no independent multiplicity claim.",
+  "existing256": {
+    "path": "runs/open_junqi_v4_root_explore_20261004_214715/arena/block_000024_screen.json",
+    "sha256": "2a0339b057b0726fcceb9b0b6244bca684cc73fb166ca77f64ccc92b0cbbd77e",
+    "families": 16
+  },
+  "stop_paths": [
+    "runs/open_junqi_v4_longitudinal_20261005_035049/STOP",
+    "runs/open_junqi_v4_longitudinal_20261005_035049/supervision/STOP"
+  ],
+  "historical_stop_preservation": {
+    "runs/open_junqi_v4_actor_refresh_20261004/STOP": "e8c684ad1c95fa90104bea4b33e429ea7023dd4dfa6e296cfa3a8d682213b301",
+    "runs/open_junqi_v4_fresh_continuation/supervision/STOP": "ccc2a043dc2ecaec4b3962bf8f6ab567680c0ccecad257e0f7896dd5364e0cd5",
+    "runs/open_junqi_v4_long_behavior_20261004_081501/STOP": "fb9bb046a88db55c0829d2797b85d77b2419e7411bac60a999a9232f32c6d77f",
+    "runs/open_junqi_v4_long_behavior_20261004_081501/supervision/STOP": "fb9bb046a88db55c0829d2797b85d77b2419e7411bac60a999a9232f32c6d77f",
+    "runs/open_junqi_v4_repair_pilot/supervision/STOP": "b711d1104a45c50e3490496437fe9ff0155741317bae9881f2cd6fbbe0da98d4",
+    "runs/open_junqi_v4_root_explore_20261004_214715/STOP": "37893de54517b5bfc6b150ae0e8e3801d223a753abce18503042f78b3f28c9d3",
+    "runs/open_junqi_v4_root_explore_20261004_214715/supervision/STOP": "37893de54517b5bfc6b150ae0e8e3801d223a753abce18503042f78b3f28c9d3",
+    "runs/open_junqi_v4_actor_policy_20261004_184157/CURRENT.json": "34d8a39670ad6f90589d83793edab5ca19ecf1bd553369b91a6b58cf21372f24",
+    "runs/open_junqi_v4_dedup_factor_20261004_035152/CURRENT.json": "a9f448b91067bde4fd0cdd2a245736771f7df21c93ba788ed6253e87514a4774",
+    "runs/open_junqi_v4_exploration_factor_20261004_055403/CURRENT.json": "528344cec666c4ad3173c36badbbd67514ba637bdaff9c65a42e4952a99cc8ac",
+    "runs/open_junqi_v4_fresh_continuation/CURRENT.json": "8b26457a79f6431864dfcfe2b64a6d78e2777dcb175a23baa0d5883c0940237c",
+    "runs/open_junqi_v4_frozen_completion_20261004_131703/CURRENT.json": "6eec8c6053fe7d776550cab336623dc04788bfca900697af80d92dff66ddc758",
+    "runs/open_junqi_v4_late_noise_factor_20261004_143905/CURRENT.json": "aaa7e1a603476ae9b6997a42c1cc3c413e14abeb6a78e072bea20427674accbe",
+    "runs/open_junqi_v4_long_behavior_20261004_081501/CURRENT.json": "ea8067971cd76158187e2837cb5c4a6ed09896f79fc6324f5b9021f8496faf13",
+    "runs/open_junqi_v4_policy_anchor_factor_20261004_042349/CURRENT.json": "1e49ee8f4e726fbd38a19f45cf84c8501a44f1d378afb6093114634edaa6155f",
+    "runs/open_junqi_v4_repair_pilot/CURRENT.json": "0b47d7e6ad6196d706735b114baaaf233a6d0e155d41c6d5f3fa0d4b81ea9e8b",
+    "runs/open_junqi_v4_root_explore_20261004_214715/CURRENT.json": "e24f2b72d6851d791cbfcd12fc2477024589403b9cddba22344f77e3e981d19d",
+    "runs/open_junqi_v4_self_training_20261004_023128/CURRENT.json": "b8ac0f07ba714027f0daac19fe64ed71c1919fca2d5ab6f585426c3976911c9b",
+    "runs/open_junqi_v4_tactical_training_20261004_065605/CURRENT.json": "a385c2c6f32f53b090e4bdf748c2830595937a2761948fde9352e9f99265a659",
+    "runs/open_junqi_v4_teacher_history_factor_20261004_052542/CURRENT.json": "5e21038f4ef1e95e8e4a83d14e0fa02737afd95e12665af02acd82519d80f2fa"
+  },
+  "frozen_sources": {
+    "build/JunqiAZ.cp310-win_amd64.pyd": "18e86e9cc5db416c72c44d4aaa019f05218aa95f9326ae10153c68b370f9b528",
+    "python/junqi_open_v4/arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python/junqi_open_v4/layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python/junqi_search_v3/search.py": "004db7b2ab1735c42f98ace3d3cabbdf3b74e31d730baa80980c49ba44195041",
+    "python/junqi_az/model.py": "7c3107408245e62ed4a97433e779f6d0cb2c4d084dc6bda67104edb2d7befaa7",
+    "tools/evaluate_open_v4_longitudinal.py": "f938f60a531e3fd9e070639e2829943672d4561444cddf1054ecc6730ed35862"
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "schema": "open-junqi-search-v3",
+  "seed": 2026072501,
+  "device": "cuda",
+  "run_directory": "runs/open_junqi_search_v3",
+  "initialization": "random",
+  "ablation_source": "runs/fixed_layout_rl_v2b_advantage_multilayout/checkpoints/champion.pt",
+  "boundary": {
+    "layout_set": "config/layouts/fixed_layout_v1.json",
+    "layout_id": "public_conservative_advance",
+    "fixed_first_player": 1,
+    "mirror": false,
+    "multiple_layouts": false,
+    "max_ply": 1000,
+    "no_capture_ply_limit": 200,
+    "repetition_limit": 3
+  },
+  "oracle": {
+    "name": "supplement_wide_quiescence",
+    "budgets": [500, 2000, 8000, 32000],
+    "max_depth": 7,
+    "shallow_fraction": 0.1,
+    "scale_calibration_states": 64,
+    "scale_calibration_budget": 2000,
+    "scale_quantile": 0.9,
+    "stability_states": 32,
+    "minimum_stability_8000_to_32000": 0.5,
+    "minimum_top3_stability_8000_to_32000": 0.7,
+    "maximum_mean_regret_8000_to_32000": 0.02
+  },
+  "data": {
+    "trajectory_families": 1024,
+    "workers": 16,
+    "transaction_families": 16,
+    "target_unique_states_min": 20000,
+    "target_unique_states_max": 40000,
+    "trajectory_temperature": 0.25,
+    "oracle_actor_side_schedule": "balanced_by_family",
+    "branch_counts": {"0": 0.1, "1": 0.4, "2": 0.35, "3": 0.15},
+    "opponents": {
+      "supplement_wide_quiescence": 0.4,
+      "exact082": 0.25,
+      "random": 0.15,
+      "aggressive": 0.1,
+      "frozen_weak_network": 0.1
+    },
+    "tau_labels": [0.1, 0.2, 0.5],
+    "probe_states": 512,
+    "normal_budget": 2000,
+    "important_budget": 8000,
+    "probe_budget": 32000,
+    "exact082_candidate": "../teachers/082/candidate.py",
+    "weak_checkpoint": "runs/open_junqi_search_v3/checkpoints/initial_random.pt"
+  },
+  "train": {
+    "batch_size": 1024,
+    "overfit_batch_size": 2048,
+    "learning_rate": 0.0001,
+    "minimum_learning_rate": 0.00001,
+    "weight_decay": 0.0001,
+    "max_gradient_norm": 1.0,
+    "terminal_wdl_weight": 1.0,
+    "oracle_value_aux_weight": 0.1,
+    "policy_weight": 1.0,
+    "epochs": 20
+  },
+  "puct": {
+    "cpuct": 1.5,
+    "inference_batch_size": 256,
+    "simulations": [8, 16, 32, 64, 128],
+    "selfplay_simulations": 64,
+    "repeated_state_simulations": 128,
+    "dirichlet_epsilon": 0.25,
+    "search_gain_direct_games": 512,
+    "search_gain_external_games": 64
+  },
+  "loop": {
+    "iterations": 10,
+    "games_per_iteration": 1024,
+    "transaction_games": 64,
+    "replay_iterations": 5,
+    "maximum_replay_samples": 200000,
+    "state_policy_cap_per_iteration": 4,
+    "check_games": 128,
+    "minimum_unique_state_ratio": 0.2,
+    "maximum_prefix_share": 0.2,
+    "consecutive_search_gain_failures": 2
+  },
+  "model": {
+    "input_channels": 107,
+    "board_rows": 12,
+    "board_cols": 5,
+    "action_size": 3600,
+    "channels": 192,
+    "residual_blocks": 10,
+    "policy_channels": 64,
+    "auxiliary_targets": 0,
+    "repetition_context": true,
+    "value_head_type": "wdl",
+    "wdl_search_mix": 1.0,
+    "pairwise_action_bias": true
+  }
+}

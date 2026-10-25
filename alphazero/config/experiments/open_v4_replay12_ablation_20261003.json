@@ -1,0 +1,127 @@
+{
+  "schema": "junqi-replay-ablation-plan-1",
+  "preregistered_at": "2026-10-03T13:01:10.576393+00:00",
+  "directory": "runs/open_junqi_v4_replay12_ablation_20261003",
+  "parent_config": "config/open_junqi_v4_repair_pilot.json",
+  "parent_current": {
+    "iteration": 20,
+    "contract_hash": "9bc077d7de051a9b703f7a2fa68781172b6a0d333f3c6a7ed726b2015ba09bbe",
+    "learner": {
+      "path": "checkpoints\\learner_000020.pt",
+      "sha256": "aa0706f07b50d7f146a3a8b650f8888bf9fc4219ccd42658370973c87279636c",
+      "model_hash": "9cc5f08f6ed91546616b899db81e20bcb014d57665d349d0e33d65cb2c2bc9c1",
+      "iteration": 20
+    },
+    "actor": {
+      "path": "checkpoints\\actor_000009.pt",
+      "sha256": "ac295fca2615515e979ded277ebff44ae781d60e52fdcf0b9508a3536e602f69",
+      "model_hash": "e8ae1c5a13c87dca340fe08b9d5bd5a62781797d877ac4a1a5a3ada6e13d6d6d",
+      "iteration": 9
+    },
+    "champion": {
+      "path": "checkpoints\\champion_000009.pt",
+      "sha256": "f50817059d72555db5aa785c60c5ec1915b3adc51c41695c06760aa4c02cb044",
+      "model_hash": "e8ae1c5a13c87dca340fe08b9d5bd5a62781797d877ac4a1a5a3ada6e13d6d6d",
+      "iteration": 9
+    }
+  },
+  "source": {
+    "python\\junqi_open_v4\\arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python\\junqi_open_v4\\config.py": "b58a87198414d043be931ef1bd19a4be7a4b09bcd7fcd35137d2219a369b00b1",
+    "python\\junqi_open_v4\\games.py": "5de350efbdbac4dc7424db6ea93ce5348f7495d1d1dc5ccd41c969b0e795a67c",
+    "python\\junqi_open_v4\\layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python\\junqi_open_v4\\learner.py": "ef5a182a6a77051497b486d8e4f80069e71b6c5c689869cce29b757dda261a07",
+    "python\\junqi_open_v4\\pipeline.py": "9326051547671df1ef675b3253de8ffbd4b1a3490bbf5db32cbd96dc8f122d1a",
+    "python\\junqi_open_v4\\teachers.py": "7fded99345006425cc04ce332214cd7d6cba4c181e4ab5dea920a2d9bf5a29d5",
+    "python\\junqi_open_v4\\__init__.py": "f1ff7c0abac69104737e89fdf0c927c7b91ca1994f3cfccd986c8dae9d62437c",
+    "python\\junqi_search_v3\\search.py": "beaf8b8461c2a52cf0d745336c962c327f50ce89e877df89add7db4ecef51fb4",
+    "python\\junqi_search_v3\\recovery.py": "66f7d011440047d833b794cbb202c1a5c39999ff5a4e4796184aff3c87734b6c",
+    "python\\junqi_search_v3\\loop.py": "30b19b9b3caa280219447f135d72f9f6e30018bfb9851c84ca1a5392c2b5df72",
+    "python\\junqi_az\\model.py": "7c3107408245e62ed4a97433e779f6d0cb2c4d084dc6bda67104edb2d7befaa7",
+    "build\\JunqiAZ.cp310-win_amd64.pyd": "c9b67d5aa5a2a343f3f655edee9e49fb1823762ddea9f5a7dc847eb81f372bba"
+  },
+  "control_checkpoint": {
+    "path": "runs\\open_junqi_v4_phase_ablation_20261003_2032\\control\\learner.pt",
+    "sha256": "b065d1143ef4d347606396c476892a63e18c4a2157173059fde058c1d6c3bcb1"
+  },
+  "control_contract": "runs\\open_junqi_v4_phase_ablation_20261003_2032\\CONTRACT.json",
+  "replay": [
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000009.npz",
+      "sha256": "3960deb9952fba131b7c56c06a6b7588a4887dd64fa66312a5379b86be1af201",
+      "iteration": 9
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000010.npz",
+      "sha256": "396a7dc818b492634a141465b80698a35586562493d6176c29534210c6b15902",
+      "iteration": 10
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000011.npz",
+      "sha256": "ae2fc62fee93f9761d00c5c11d56fadde2265ea258def0debeff084f2b738027",
+      "iteration": 11
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000012.npz",
+      "sha256": "0060e9f571e6e66f301915a5e1960edb66663ee3f89f3f64af2e0e577871d7b2",
+      "iteration": 12
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000013.npz",
+      "sha256": "b877e3f7d866d87bdd9a4b04c10aedaa6579af69cb197db5010d7b38ef913192",
+      "iteration": 13
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000014.npz",
+      "sha256": "6a05c835e7a6fe22930bd09505f875cd01e3483b5477ad95746177972a6eb8e9",
+      "iteration": 14
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000015.npz",
+      "sha256": "a92f1283058bdb2700d914f574c1ba86dd83acd559eb5c504705bd3f73b447af",
+      "iteration": 15
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000016.npz",
+      "sha256": "f751f0c17dd65cb9da9cfad2e3289f3131306817a545f846972f1ef21ded24f1",
+      "iteration": 16
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000017.npz",
+      "sha256": "77b32e6c8040ea506be8386d7d40786f1135255aee57ab0c29f762dc6b99ba96",
+      "iteration": 17
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000018.npz",
+      "sha256": "3c65620f60b4fb8a311a503764b4e75bd01ef5c03684801120781e6ef0dc3a34",
+      "iteration": 18
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000019.npz",
+      "sha256": "3f9807bbf78f53d82d3e2528dbfd168b9a617561eca9462996f2916dcfbd304f",
+      "iteration": 19
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\replay\\iteration_000020.npz",
+      "sha256": "9cd9825aa01ea1c3140632bdb5473b11d3ab0b4acdf39bc36ed51a618953ece1",
+      "iteration": 20
+    }
+  ],
+  "updates": 384,
+  "replay_iterations": 12,
+  "common_holdout_iterations": [
+    18,
+    19,
+    20
+  ],
+  "evaluation_families": 32,
+  "evaluation_seed": 2026072052,
+  "hypothesis": "The previous fixed-window phase ablation overfit the 3-iteration replay and did not improve teacher strength. Expand the immutable training replay to 12 iterations, leaving PPV schedule and all optimization/search budgets unchanged.",
+  "changed_factor": "training replay window 3 to 12; about 9859 to 41218 total sparse positions before internal holdout",
+  "held_constant": "complete learner20 checkpoint and optimizer/scheduler/RNG, 384 additional updates, LR and phase schedule, layout boundary, teacher binaries, simulation budget, development suite families and colors",
+  "control_reuse": "Reuse the already trained PPV384 control from the phase ablation with the same complete parent20 state and 18-20 replay; rerun its matchups paired with the wide candidate.",
+  "selection": "Prefer wide route only if its duel against the control has lower CI95 > 0.5 and paired teacher deltas have lower CI95 > 0 against both parent and control for each teacher. No automatic promotion.",
+  "training_role": "all replay comes from train; original internal family holdout excluded. Development/final data never trains.",
+  "stop_policy": "respect original supervision STOP and experiment STOP; full checkpoint every 64 steps",
+  "promotion": "none"
+}

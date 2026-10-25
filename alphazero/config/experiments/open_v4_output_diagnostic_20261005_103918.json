@@ -1,0 +1,226 @@
+{
+  "schema": "junqi-complete-output-diagnostic-1",
+  "directory": "runs/open_junqi_v4_output_diagnostic_20261005_103918",
+  "roots": 16,
+  "budget": 64,
+  "parent_config": "config/experiments/open_v4_single_ratio_base_20261005_070831.json",
+  "source": {
+    "build-experiments/93c0594487ee8e5defbfdc0b0b883a43917f354fb24359808304aa76fc6ce504/BUILD.json": "65066f4985ee1e5f6435e90b452e100310f87ae990ec21892ca169bdd32ee64e",
+    "build-experiments\\93c0594487ee8e5defbfdc0b0b883a43917f354fb24359808304aa76fc6ce504\\JunqiAZRootExplore.cp310-win_amd64.pyd": "457a0f07e8ddd3f30927b23d53379d8ebeb7cad3a124ac47d02a42eb392face8",
+    "build/JunqiAZ.cp310-win_amd64.pyd": "18e86e9cc5db416c72c44d4aaa019f05218aa95f9326ae10153c68b370f9b528",
+    "cpp/az_state.cpp": "f3b36aab1199fbe6f672b646762b8b86843605c36a80143c65bf3de4b06fc732",
+    "cpp/az_state.h": "d18d1d320bf9fed223932dad30ff694b3c9f666b58829a981d0aba4f50dfed9b",
+    "cpp/junqi_az_bindings.cpp": "456d781893f5bea175bd90056abc6ef1aec7e854de9ee0ff7b34bc7a14798215",
+    "cpp/neural_puct.cpp": "6aac0da12e68da0072a049e0ff6c454d300b713c10bf6420458ec862c20bb5d9",
+    "cpp/neural_puct.h": "3cc545192d3bca1c09ec2a1f664fd9dc4ff20ded5425e931f3a9912b5c066876",
+    "cpp/root_explore/bindings.cpp": "082f276aef204c9ba151a164913e7501837971cdbcb3eefdf563a18fed27294d",
+    "cpp/root_explore/neural_puct.cpp": "9efe8c4fc0a7a623e95514426e69a17411597eff3ed2d303d8cb81e1fe2e98af",
+    "cpp/root_explore/neural_puct.h": "a3ecdbe42d9a2b8f3008e02628781926c14442853ad72d2ff7cad31471a453e9",
+    "cpp\\az_state.cpp": "f3b36aab1199fbe6f672b646762b8b86843605c36a80143c65bf3de4b06fc732",
+    "cpp\\az_state.h": "d18d1d320bf9fed223932dad30ff694b3c9f666b58829a981d0aba4f50dfed9b",
+    "cpp\\combat_resolver.cpp": "fe7af555d3c300a5a56c8ed65b2bb3e24f7ba5f1da8d190cb6e4b8f16279ffac",
+    "cpp\\combat_resolver.h": "0cd485425b2486714ead431daeadb44f85e890bc548745febe04cf99e3a818f9",
+    "cpp\\heuristic_084_evaluator.h": "b64155f26a2c31ea2d6c0810050816248ffd07791729f316f9d23a80d904b17e",
+    "cpp\\junqi_board.cpp": "7df196944289531460d55cab14863a24f887028a6c10d3d728f1afe55e907398",
+    "cpp\\junqi_board.h": "587a636cc2ef30dda9f595c680cfaebf08b3cde1a5d03c604b3c72beb8d34697",
+    "cpp\\junqi_environment.cpp": "3508b8382a9c067b457a18222f106baa78a72fb7932f3e9dffaa3b78999940c6",
+    "cpp\\junqi_environment.h": "bcdbe047b285d5f58d6f38aca2a76c91cb084fa9359090d47e52592d21413462",
+    "cpp\\junqi_state.cpp": "111308c7d00e7a214303c7b79b4718810ab0d877e2136bbd80436faebce8faae",
+    "cpp\\junqi_state.h": "7ff588a8eaa91ebe2a627ce48b4b3abbc164fb409d48506967d77b7b472079ac",
+    "cpp\\junqi_types.h": "2aedf17e0eaaea5712972f5b511b88f9011e2ba43ded313963de049edb5ab571",
+    "cpp\\move_generator.cpp": "089eb909b2c3f1f84ca862dd06b64801aeb69387cedd21aab185d1f40144fa86",
+    "cpp\\move_generator.h": "ab192955ffbd7a18cc68011f7771e01d82695743bb8b5f95982384e48c369a64",
+    "cpp\\neural_puct.h": "3cc545192d3bca1c09ec2a1f664fd9dc4ff20ded5425e931f3a9912b5c066876",
+    "cpp\\root_explore\\bindings.cpp": "082f276aef204c9ba151a164913e7501837971cdbcb3eefdf563a18fed27294d",
+    "cpp\\root_explore\\neural_puct.cpp": "9efe8c4fc0a7a623e95514426e69a17411597eff3ed2d303d8cb81e1fe2e98af",
+    "cpp\\root_explore\\neural_puct.h": "a3ecdbe42d9a2b8f3008e02628781926c14442853ad72d2ff7cad31471a453e9",
+    "cpp\\setup_generator.cpp": "586b9ceac54433705a5dbf8012cbbc6ab6d73c498040623f6c6b60504f8febcd",
+    "cpp\\setup_generator.h": "c93ea3895bc9183b14b68401d5aa8e862aa47496fea28e092e30ff2afe59b5f5",
+    "cpp\\setup_validator.cpp": "9c32e9aae1ce9baed74b341112dc446afccce8acad1c2de799990f83d3cc9e0a",
+    "cpp\\setup_validator.h": "069b83e33aa2f7bb6b935f9f51019ed7434b13d20bf898177ac572a151790537",
+    "python/junqi_az/model.py": "7c3107408245e62ed4a97433e779f6d0cb2c4d084dc6bda67104edb2d7befaa7",
+    "python/junqi_open_v4/actor_policy_games.py": "0783ed7b8da4261cb322a501f037ddf1e61645866d5ab22ede4a10f67f9f37ee",
+    "python/junqi_open_v4/arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python/junqi_open_v4/config.py": "77c8a06e0024cb7ab06259003e31eb47bdf45962b293804e00d41cf3c7a48e56",
+    "python/junqi_open_v4/games.py": "58dad58ef18051a48773d342108469b946d31be3c9d96f86557db1d450a5d553",
+    "python/junqi_open_v4/layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python/junqi_open_v4/learner.py": "ef5a182a6a77051497b486d8e4f80069e71b6c5c689869cce29b757dda261a07",
+    "python/junqi_open_v4/pipeline.py": "9326051547671df1ef675b3253de8ffbd4b1a3490bbf5db32cbd96dc8f122d1a",
+    "python/junqi_open_v4/queued_config.py": "e523d476fb1bdbca4053f0277b0629dfbda8582bb4d761ca281d88b1aca3168a",
+    "python/junqi_open_v4/queued_games.py": "927bf4ad2ca5e307fdd09a7926d0a89e4357f8bde1ce9d7e71db06b1649a6f58",
+    "python/junqi_open_v4/root_explore_config.py": "29147ee7486353bea9e62e6db2de307469bf0d734fea331dbb24c3269cb2e5ac",
+    "python/junqi_open_v4/root_explore_games.py": "854e256bd4deafb6f16fef25b1919a863dadcdb4c120f4494c565c56cdc5d2f4",
+    "python/junqi_open_v4/teachers.py": "7fded99345006425cc04ce332214cd7d6cba4c181e4ab5dea920a2d9bf5a29d5",
+    "python/junqi_open_v4/training_replay.py": "db4b3357b457e34897a5f2815b955932be3352293adc9c8b22b79a7ccfa69227",
+    "python/junqi_search_v3/loop.py": "30b19b9b3caa280219447f135d72f9f6e30018bfb9851c84ca1a5392c2b5df72",
+    "python/junqi_search_v3/root_explore_search.py": "44fc45a7d7ec44ca25d38615797ba00bf92aefdd79b7e2174c9558d549d27cd6",
+    "python/junqi_search_v3/search.py": "004db7b2ab1735c42f98ace3d3cabbdf3b74e31d730baa80980c49ba44195041",
+    "start_open_v4_actor_policy.ps1": "0a85f09f2fd8a249ac4c8c35cd2cc64c4260eb86701b538fc4439ab41958af8e",
+    "start_open_v4_frozen_completion.ps1": "6cfd58d6044711da82989670ffa92a6c2947bb8817b55bf6f740bf47d1b4890b",
+    "start_open_v4_immediate.ps1": "b0c97ac9926c110d16e79befaf7bce34221259965f225933a6b9a4f75d3740c3",
+    "start_open_v4_long_behavior.ps1": "715b56fafd7d2fd7a2094e834d954d36a8665cb25d4188dc8293a9bdd28f1a63",
+    "start_open_v4_root_explore.ps1": "3af5129b8d8114217a8e7daaa958c8076256b230e947da33223b959bbf2498d0",
+    "start_open_v4_single.ps1": "cc9043004ead6c06a8bfdb17bbbf0e7233bab37912ffd5e5b26fa6fba1908ed9",
+    "start_open_v4_single_ratio.ps1": "f03db11d5cb8be08b01723002459f3b9a95883aef8f08103b597c494469d2fb4",
+    "stop_open_v4_single.ps1": "f80fb2083887c406ea957f3ec92b48fd453c3d729d21eeb886201fcc43b36fb9",
+    "stop_open_v4_single_ratio.ps1": "c35a449889f1824ae5a665a777c0efbc46c2fecd095a05b6ab426f083ad10501",
+    "tests/test_open_v4_actor_policy.py": "4cfe77ba6a120ceebcd24ff3cde11b898fca3777e6e0d4ef5324aa83a4501010",
+    "tests/test_open_v4_cached_arena.py": "21a86cb529db4e82138654c94b7868632c44a344836587d230b401eb6781bca5",
+    "tests/test_open_v4_immediate.py": "33759f094f1e49321a9d653428f77b0c1d660dae7f80adddbc34391a819420c7",
+    "tests/test_open_v4_long_behavior.py": "8075663bb1c2ea5eb4d8c476cf79e3ac039cd63e2ee5174a1c3f534cf8c44db0",
+    "tests/test_open_v4_root_explore.py": "a4fec4afae77aa8a17c2ccc53726bfaadba5b41428ce34b350ed134a58aca75f",
+    "tests/test_open_v4_single.py": "fa3fecbafcbcc2930f25cb0b0c91f5b07ce5ecf8f2bb52c2e825f124325fc09f",
+    "tests/test_open_v4_single_ratio.py": "5b40686a0af0b16ad5dbebc9637e3aae4134222e938d9b0fd1d3adf03e9557a0",
+    "tools/audit_open_v4_actor_policy_boundary.py": "8926624e9898729de397bd5008c00e7f626733c15bd191ed96c70fd17993372d",
+    "tools/audit_open_v4_queue_boundary.py": "f1b890147ffad813e69caab278318b053ff3c42147608872b9a43b7507361505",
+    "tools/audit_open_v4_root_explore_boundary.py": "e40b23b6322d97856cf452544aa26eb588f0d7f2fb56434819d182b7288c03da",
+    "tools/audit_open_v4_single_ratio_boundary.py": "88fee60eb724ed0c0bc13767a634275b17381f2e05f3e022649c4f24277e697d",
+    "tools/build_open_v4_root_explore.py": "a974c06190cb588d004442efa7d13d2cd5bdfd7851473d949d915e45dc940a8b",
+    "tools/evaluate_open_v4_longitudinal.py": "f938f60a531e3fd9e070639e2829943672d4561444cddf1054ecc6730ed35862",
+    "tools/evaluate_open_v4_search_budgets.py": "dde05baee6513d24129ca0ee4dce90fc1b54882e5134880c2fd1d7eca8e23a77",
+    "tools/fork_open_v4_qualified.py": "6ed4f4566f445f129c5a16784f527c3360fdaea1751b90c18c18447cb5b34e3f",
+    "tools/open_v4_actor_policy_contract.py": "7862d8ee7017ad6ed34dd46de71d6498cb2c753f69c21946f47aed38ab2aab41",
+    "tools/open_v4_cached_arena.py": "cd1d83df9e7f8fbc90e98d99178aa79a4753dfd9447d546459e57b6e21f8cb1a",
+    "tools/open_v4_experiment_evidence.py": "a94ae30371e981b88ab2f4fe9fb397fb92c729dc447b199bb6606f226fd5ec81",
+    "tools/open_v4_queue_contract.py": "64662acf9ef258affd20e060966ea0cb8d36df601a8b3fd6cc33b256c905cd75",
+    "tools/open_v4_root_explore_contract.py": "6e4b60cd20b5de31d7b6f0d5b421ed164bad16f7b8e5c1e89fb6853e93b997e1",
+    "tools/open_v4_runtime.py": "7156da55f9de8bc0420bffad6266af7bdc77dfa00496f6e480b05b3f3cb1a30a",
+    "tools/open_v4_single_contract.py": "eb099ceade9232fd8e97be00e5eb90fe59612770a3c40d431afba4b29fad6e89",
+    "tools/open_v4_single_ratio_contract.py": "96bb9246a62a127d88e0b01db288d688820678899ab261776d989fb6da39a567",
+    "tools/open_v4_update_ratio_contract.py": "5d4cc6e75729b9845b8e36167dbcc9b8dcaf4e7b4de4f3e596c7aabc932ea7b2",
+    "tools/prepare_open_v4_actor_policy.py": "4251284e06fd50293e710d55d3df9d33a961fc4ea03109949ee76b8b3811efdb",
+    "tools/prepare_open_v4_frozen_completion.py": "6b55526dd78d2e1a83fbdad7c692e83e5d8004e27319012ae908ea2c2e92ac75",
+    "tools/prepare_open_v4_immediate.py": "959d54688d695cf38056e1d180b610b4f24ac8f674e8dbafa62195dfe7b30805",
+    "tools/prepare_open_v4_long_behavior.py": "d3ae9eefc23818c48bdf35ac7f0d58704f002a7a68f92a597076ca0beefecdff",
+    "tools/prepare_open_v4_root_explore.py": "9b29a954575d867d39334b8aef1811c002d6e11aa324a6fd93b82e55980c1afa",
+    "tools/prepare_open_v4_single.py": "ad19ef2a8d795631bd4f2af51b29cf91373826d24d04de3d4d62a5f2663c6efe",
+    "tools/prepare_open_v4_single_ratio.py": "8ebdc91d1aef4eee357706e1fe6b4597ee59e19c39dba63fc954ca3322fdc5cc",
+    "tools/prepare_open_v4_tactical_training.py": "7596bd7cc2439a6128c92329692b9f3b49cd18957083e23b9bf689251d7ba5c4",
+    "tools/review_open_v4_single_final.py": "efbc3909734c80c007f56b59d6a11dbf562d1855daa9e96beca9b2a6687ca5c7",
+    "tools/root_explore_training_diagnostic.py": "2cbec152485c61adda9be8a43086d5d92870e2f657279b76d1e5dacec1edde2a",
+    "tools/run_open_v4_actor_policy.py": "d715c5f4f355e4ee180b11cdb825ea8d515288160ae526f4b17ebdb26b922d92",
+    "tools/run_open_v4_fresh_data.py": "6026196b0bfddba22062e160afd8c46c20939d84e34dbebf6748309ae5ef41d8",
+    "tools/run_open_v4_frozen_completion.py": "9c3cd8e511e359663066d143a5728edba70d437de95360942582a8a4151af468",
+    "tools/run_open_v4_immediate.py": "2bf53303590948d75dc40a2063ef35eb876cd3f380fb5cf7d0f224b1a09f7712",
+    "tools/run_open_v4_long_behavior.py": "fd83a1b6f0f8f0827e28bad9e2af104c56f3d1e11648444f63fb1909f7b4f59d",
+    "tools/run_open_v4_queued_training.py": "d58aba390696bd5fd189742db1471be8580c9e05e0e7892262f1c0eb287bde99",
+    "tools/run_open_v4_root_explore.py": "63c63f4e61224c8ae21fa5dc094451f00924abd7a07731e2749abd80ff263dfa",
+    "tools/run_open_v4_search_training.py": "c528b62640ae85f7e6d04f358032959118131a94f7b348dc277debfa54d300f7",
+    "tools/run_open_v4_single.py": "a326c167c1f352cd64e3855f3aac21db143f7b617d4942bb0ad2f6d1388bd1cd",
+    "tools/run_open_v4_single_ratio.py": "fc32df57305c47b82bbfe7dbcb9f6dcb43b2692432ef9ce8128b05c28ed69514",
+    "tools/run_open_v4_tactical_training.py": "951702076294768fcdd7e0bd5df156d699561e24ece3632a0628ac17f4f4e87b",
+    "tools/verify_open_v4_root_explore_cpu.py": "1b94c9158e257724767200b2414f8ea4e592ac777a5f6209c6f390c4a2ce3710",
+    "tools/diagnose_open_v4_policy_value.py": "edf1dfaecda9f7ddf84087300ea2b6cb622084ba130d07a665c074a37ac02401",
+    "config/experiments/open_v4_single_ratio_base_20261005_070831.json": "b14c327156dbf8086dca8c723ae98c3af064126f648c2d3486185eb74d498057"
+  },
+  "historical_stops": [
+    {
+      "path": "runs\\open_junqi_v4_actor_refresh_20261004\\STOP",
+      "sha256": "e8c684ad1c95fa90104bea4b33e429ea7023dd4dfa6e296cfa3a8d682213b301"
+    },
+    {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\supervision\\STOP",
+      "sha256": "ccc2a043dc2ecaec4b3962bf8f6ab567680c0ccecad257e0f7896dd5364e0cd5"
+    },
+    {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\STOP",
+      "sha256": "fb9bb046a88db55c0829d2797b85d77b2419e7411bac60a999a9232f32c6d77f"
+    },
+    {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\supervision\\STOP",
+      "sha256": "fb9bb046a88db55c0829d2797b85d77b2419e7411bac60a999a9232f32c6d77f"
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\supervision\\STOP",
+      "sha256": "b711d1104a45c50e3490496437fe9ff0155741317bae9881f2cd6fbbe0da98d4"
+    },
+    {
+      "path": "runs\\open_junqi_v4_root_explore_20261004_214715\\STOP",
+      "sha256": "37893de54517b5bfc6b150ae0e8e3801d223a753abce18503042f78b3f28c9d3"
+    },
+    {
+      "path": "runs\\open_junqi_v4_root_explore_20261004_214715\\supervision\\STOP",
+      "sha256": "37893de54517b5bfc6b150ae0e8e3801d223a753abce18503042f78b3f28c9d3"
+    },
+    {
+      "path": "runs\\open_junqi_v4_single_ratio_20261005_070831\\STOP",
+      "sha256": "5da0797ae64b853347ba9a40759e7863b92e707b5278e8a05aa17c6860be5795"
+    },
+    {
+      "path": "runs\\open_junqi_v4_single_ratio_20261005_070831\\supervision\\STOP",
+      "sha256": "f023c8e9b8b0ce3d5302549560020b0a1add11a46bc961271624e9a54c586cb1"
+    }
+  ],
+  "stop_paths": [
+    "runs/open_junqi_v4_output_diagnostic_20261005_103918/STOP",
+    "runs/open_junqi_v4_output_diagnostic_20261005_103918/supervision/STOP"
+  ],
+  "models": {
+    "158": {
+      "path": "runs\\open_junqi_v4_single_20261005_044709\\learner\\checkpoints\\learner_stage_000024.pt",
+      "sha256": "8ac7da0dca2233a989973ef65554b921d75a1c94b78194b2e3764a1051f09158",
+      "model_hash": "8de2403e6baf466d92ad46897a5a8648c36e7e739147334f5ac1b3fc8c41c6ca",
+      "iteration": 158,
+      "leaf_value_scale": 0.9076346023345448
+    },
+    "182": {
+      "path": "runs\\open_junqi_v4_single_ratio_20261005_070831\\learner\\checkpoints\\learner_stage_000024.pt",
+      "sha256": "d84453c107c02c086fd01039f75dcafe9d3850c8bde46227b77cc418d2c93d5e",
+      "model_hash": "86a1eb43d3fc8d229f62e37dcd26a50d6fca79e3dc27729107f68f2265084dc0",
+      "iteration": 182
+    }
+  },
+  "corpora": {
+    "158": [
+      {
+        "stage": 22,
+        "path": "runs\\open_junqi_v4_single_20261005_044709\\learner\\replay\\collection_000022.npz",
+        "sha256": "b0f4b4a6af63b3500eee946e013ea38a399589c3c1b09f45a3b15e3d6bfe76c9",
+        "metadata": "runs\\open_junqi_v4_single_20261005_044709\\learner\\replay\\collection_000022.json",
+        "metadata_sha256": "cdb52ebaf82061bb1db9d0797fe1c3544f0a5e3f3f6ff60d423da1d279329eb5"
+      },
+      {
+        "stage": 23,
+        "path": "runs\\open_junqi_v4_single_20261005_044709\\learner\\replay\\collection_000023.npz",
+        "sha256": "fa0f2f6eb28f0b399b4f8e62bedc860c0cda2da79c2afa76e7e31fe4772ef6d3",
+        "metadata": "runs\\open_junqi_v4_single_20261005_044709\\learner\\replay\\collection_000023.json",
+        "metadata_sha256": "74f0149e898c3673973d4a6ca7fe7c77bd1a71d9babeddf77bc58457ae2f45ca"
+      },
+      {
+        "stage": 24,
+        "path": "runs\\open_junqi_v4_single_20261005_044709\\learner\\replay\\collection_000024.npz",
+        "sha256": "ebe1f5086788c1a84e4369e898cb45084d30ba34faede7fcb09aac458338f48b",
+        "metadata": "runs\\open_junqi_v4_single_20261005_044709\\learner\\replay\\collection_000024.json",
+        "metadata_sha256": "59a4cce0db9df5e0a789a485706d1b80d7f45ff3615bedfc5b566b908eb3920c"
+      }
+    ],
+    "182": [
+      {
+        "stage": 22,
+        "path": "runs\\open_junqi_v4_single_ratio_20261005_070831\\learner\\replay\\collection_000022.npz",
+        "sha256": "dcaec35a574ec2dc7ea25cd33e92c3456fdb92aaaf6924b21b574e8b750d2d1a",
+        "metadata": "runs\\open_junqi_v4_single_ratio_20261005_070831\\learner\\replay\\collection_000022.json",
+        "metadata_sha256": "5693ce0d4d925eb36e2ba79c7e01181cd1f4b03176b896c24e08f4453ad5572b"
+      },
+      {
+        "stage": 23,
+        "path": "runs\\open_junqi_v4_single_ratio_20261005_070831\\learner\\replay\\collection_000023.npz",
+        "sha256": "40e0dcf29bb0d125dc0eb19edb4600d02a253689f8a3a4c5d5572e5f65a42f15",
+        "metadata": "runs\\open_junqi_v4_single_ratio_20261005_070831\\learner\\replay\\collection_000023.json",
+        "metadata_sha256": "664709929eb8c9f8d448bdc65eae0878da3c334c2a02424bf99d99dc179322f1"
+      },
+      {
+        "stage": 24,
+        "path": "runs\\open_junqi_v4_single_ratio_20261005_070831\\learner\\replay\\collection_000024.npz",
+        "sha256": "8748feb7aa7a6bbbc1d3063bddb5a4a28755c38863c2be779a6aab51207ec45a",
+        "metadata": "runs\\open_junqi_v4_single_ratio_20261005_070831\\learner\\replay\\collection_000024.json",
+        "metadata_sha256": "f0f7548b3950ae292d281fdf22297fb9296fec110c347e5b984cbb9581bfe273"
+      }
+    ]
+  },
+  "authorization": "User explicitly authorizes finding a feasible supported scheme and then continuing new training. This bounded frozen diagnosis precedes selecting one new branch. Preserve every historical STOP.",
+  "new_training_games": 0,
+  "effective_updates": 0,
+  "planned_search_simulations": 4096,
+  "registered_at": "2026-10-05T10:39:18.076665+00:00"
+}

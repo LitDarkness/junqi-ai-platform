@@ -1,0 +1,9 @@
+numpy>=1.26
+torch>=2.2
+tensorboard>=2.16
+tqdm>=4.66
+pygame>=2.5
+tabulate>=0.9
+pybind11>=2.11
+cmake>=3.23
+ninja>=1.11

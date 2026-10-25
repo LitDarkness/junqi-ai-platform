@@ -1,0 +1,5 @@
+{
+  "extends": "open_junqi_search_v3_alternating.json",
+  "run_directory": "runs/open_junqi_search_v3_strength",
+  "initialization": "strength_incumbent"
+}

@@ -1,0 +1,22 @@
+{
+  "schema": "junqi-fixed-layout-set-v1",
+  "source_archive": "optional-local-layout-library.zip",
+  "source_schema": "junqi-open-layout-library-v1",
+  "active_layout_id": "public_conservative_advance",
+  "layouts": [
+    {
+      "id": "public_conservative_advance",
+      "name_zh": "\u4fdd\u5b88\u7a81\u8fdb\u578b",
+      "canonical_setup30": [
+        1, 3, 1, 20, 30,
+        20, 70, 60, 10, 1,
+        60, 0, 40, 0, 30,
+        80, 2, 0, 10, 50,
+        2, 0, 10, 0, 90,
+        70, 30, 40, 50, 20
+      ],
+      "horizontal_mirror_allowed": true,
+      "source_notes": "\u516c\u5f00\u9635\u578b\u539f\u6837\u8f6c\u5f55\uff1b\u504f\u5747\u8861\u3001\u7565\u4fdd\u5b88\u3002\u53cc\u65b9\u4f7f\u7528\u540c\u4e00\u4e2a canonical \u5e03\u5c40\u3002"
+    }
+  ]
+}

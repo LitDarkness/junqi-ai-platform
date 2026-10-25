@@ -1,0 +1,21 @@
+{
+  "rule_profile_id": "standard_open_v1",
+  "board_topology": "standard_5x12_v1",
+  "visibility": "full",
+  "camp": {"attack_forbidden_when_occupied": true},
+  "headquarters": {"piece_immobilized_after_entry": true},
+  "railway": {"long_move": true, "engineer_can_turn": true},
+  "combat_matrix": "standard_v1",
+  "terminal": {
+    "capture_flag": "win",
+    "no_legal_move": "loss",
+    "repetition_count": 3,
+    "no_capture_ply_limit": 200,
+    "max_ply": 1000
+  },
+  "setup": {
+    "flag_in_headquarters": true,
+    "mines_in_back_two_rows": true,
+    "bombs_not_in_front_row": true
+  }
+}

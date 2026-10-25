@@ -1,0 +1,23 @@
+{
+  "extends": "open_junqi_search_v3_alternating.json",
+  "run_directory": "runs/open_junqi_search_v3_strength_continuation",
+  "initialization": "strength_incumbent",
+  "loop": {
+    "iterations": 250
+  },
+  "training_logic": {
+    "schema": "late_stage_short_horizon_v1",
+    "source_iteration": 107,
+    "policy_lr_multiplier": 0.5,
+    "policy_candidate_steps": [1, 2, 3, 4, 6],
+    "selected_policy_step": 3,
+    "value_candidate_steps": [0, 1, 2],
+    "selected_value_step": 2,
+    "policy_shortlist_size": 2,
+    "candidate_policy_kl_limit": 0.006,
+    "value_final_kl_limit": 0.001,
+    "value_peak_kl_limit": 0.0015,
+    "bootstrap_expected_model_hash": "4feaa5f7b6741c032b8f034e9d465b0391be74b011f354ea6c4979e89bf065b9",
+    "adaptive_selection": true
+  }
+}

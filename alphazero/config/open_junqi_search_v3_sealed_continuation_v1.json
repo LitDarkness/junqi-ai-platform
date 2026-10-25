@@ -1,0 +1,9 @@
+{
+  "extends": "open_junqi_search_v3_alternating.json",
+  "seed": 2026072701,
+  "run_directory": "runs/open_junqi_search_v3_sealed_continuation_v1",
+  "initialization": "strength_incumbent",
+  "loop": {
+    "iterations": 100
+  }
+}

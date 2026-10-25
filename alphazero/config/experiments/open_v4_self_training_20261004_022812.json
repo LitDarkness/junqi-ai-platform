@@ -1,0 +1,143 @@
+{
+  "schema": "junqi-self-training-plan-1",
+  "registered_at": "2026-10-04T02:28:13.021534+00:00",
+  "directory": "runs/open_junqi_v4_self_training_20261004_022812",
+  "parent_config": "config/open_junqi_v4_fresh_continuation.json",
+  "parent_config_sha256": "7799790761cd0f7fe4be00d7a547e530bd26614e46c6b8e381773bd1d47b278d",
+  "source_checkpoint": {
+    "path": "runs\\open_junqi_v4_fresh_continuation\\checkpoints\\champion_000026.pt",
+    "sha256": "ec539bed4e112d28707adaef5b75c0c493b034e0c037f020c57fed9f6c447041",
+    "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+    "iteration": 26
+  },
+  "participants": {
+    "parent": {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\checkpoints\\champion_000026.pt",
+      "sha256": "ec539bed4e112d28707adaef5b75c0c493b034e0c037f020c57fed9f6c447041",
+      "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+      "iteration": 26
+    },
+    "control": {
+      "path": "runs\\open_junqi_v4_actor_refresh_20261004\\control\\checkpoints\\learner_stage_000006.pt",
+      "sha256": "fea1123159d74df1aab8600aa42f59da350192a86956ef6d7c9ad8c47d405deb",
+      "model_hash": "3d95fdaf3ca1e124928e37a293c396baffe6377ad77373784b2ebcd811d5822e"
+    },
+    "candidate": {
+      "path": "runs\\open_junqi_v4_actor_refresh_20261004\\candidate\\checkpoints\\learner_stage_000006.pt",
+      "sha256": "d665268936d530f276c959dd2ecda154a6b843a466f5504ed9732b6d33c8cfea",
+      "model_hash": "3f285c4a4e8a80853fff2e7fe0b774ecda946f2c0a0f2b5df256d11e48a19784"
+    },
+    "repeat": {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\checkpoints\\champion_000026.pt",
+      "sha256": "ec539bed4e112d28707adaef5b75c0c493b034e0c037f020c57fed9f6c447041",
+      "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+      "iteration": 26
+    }
+  },
+  "suite": {
+    "path": "runs\\open_junqi_v4_fresh_continuation\\development\\suite.json",
+    "sha256": "94bd9a038b6dd2652e4f5bbfd1bb7021e785d745ba1877f01fbdd880fdd3b88e"
+  },
+  "teachers": [
+    {
+      "name": "0082_gemini_20260716_070923_701_p02_w02",
+      "candidate": "../teachers/082\\candidate.py",
+      "source_sha256": "c6881263cffae67ed1ff1fd77fae78ba9b54dac1a5246b872cca5f3a0320d950",
+      "binary_sha256": "351eb76c2aaed03c619e937ba330d7c95ba1a83617797a9a33d2171b1a83e663",
+      "budget": "candidate's unchanged native budget; elapsed time measured"
+    },
+    {
+      "name": "0084_gemini_20260716_122831_880_p02_w02",
+      "candidate": "../teachers/084\\candidate.py",
+      "source_sha256": "c6881263cffae67ed1ff1fd77fae78ba9b54dac1a5246b872cca5f3a0320d950",
+      "binary_sha256": "f5b27185ca0a9c03799269306e4256fa972a49bc6fc4869dfe56cc5305a08b23",
+      "budget": "candidate's unchanged native budget; elapsed time measured"
+    }
+  ],
+  "layout_manifest_hash": "0285d27b62da8e3ce215a8d9b64581b1de7f759d27edfeff2dfbe923ca7bdf20",
+  "initial_replay": [
+    {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000025.npz",
+      "sha256": "873a3fb84665f0d0810adf01a63aeae27ff6d4b47b48842477c4c966d5e9f743",
+      "metadata": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000025.json",
+      "metadata_sha256": "c97b7c15b1a21bc7e0e1f45f4bfa95ca560afe757ad423b3f6544611ff553a21"
+    },
+    {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000026.npz",
+      "sha256": "c4fc0c3ba40732cbca5721eaacbd97b84d3a01d9ac43b2175e93920c9df8563d",
+      "metadata": "runs\\open_junqi_v4_fresh_continuation\\replay\\iteration_000026.json",
+      "metadata_sha256": "da3774252e851c3eeda2cafa2861feeaefe87e68870f8309881cb113e571549c"
+    }
+  ],
+  "frozen_runs": [
+    {
+      "directory": "runs/open_junqi_v4_repair_pilot",
+      "current_sha256": "0b47d7e6ad6196d706735b114baaaf233a6d0e155d41c6d5f3fa0d4b81ea9e8b"
+    },
+    {
+      "directory": "runs/open_junqi_v4_fresh_continuation",
+      "current_sha256": "8b26457a79f6431864dfcfe2b64a6d78e2777dcb175a23baa0d5883c0940237c"
+    }
+  ],
+  "source": {
+    "tools/run_open_v4_self_training.py": "8aad41157b0eab3fecb922bbc6a089169eb872c385b8b78dbc7f6292d530a788",
+    "tools/prepare_open_v4_self_training.py": "2d7ffeaa519616727af128de692ed60ded33b30797a16403459aae1d4ef119d7",
+    "python/junqi_open_v4/config.py": "02e1f577aefbf4f54ed72d3002a14556c4a3db4ad83e9b7672faffbb8f9b8431",
+    "python/junqi_open_v4/games.py": "a72b5053d6a2bd8d4e4529d426b4d6faa4d02a3ef5521f06eea81cfefea34583",
+    "python/junqi_open_v4/training_replay.py": "db4b3357b457e34897a5f2815b955932be3352293adc9c8b22b79a7ccfa69227",
+    "python/junqi_open_v4/learner.py": "ef5a182a6a77051497b486d8e4f80069e71b6c5c689869cce29b757dda261a07",
+    "python/junqi_open_v4/arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python/junqi_open_v4/layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python/junqi_open_v4/teachers.py": "7fded99345006425cc04ce332214cd7d6cba4c181e4ab5dea920a2d9bf5a29d5",
+    "python/junqi_search_v3/loop.py": "30b19b9b3caa280219447f135d72f9f6e30018bfb9851c84ca1a5392c2b5df72",
+    "python/junqi_search_v3/search.py": "beaf8b8461c2a52cf0d745336c962c327f50ce89e877df89add7db4ecef51fb4",
+    "build/JunqiAZ.cp310-win_amd64.pyd": "c9b67d5aa5a2a343f3f655edee9e49fb1823762ddea9f5a7dc847eb81f372bba",
+    "tools/fork_open_v4_qualified.py": "6ed4f4566f445f129c5a16784f527c3360fdaea1751b90c18c18447cb5b34e3f",
+    "tools/run_open_v4_search_training.py": "c528b62640ae85f7e6d04f358032959118131a94f7b348dc277debfa54d300f7",
+    "tools/open_v4_experiment_evidence.py": "a94ae30371e981b88ab2f4fe9fb397fb92c729dc447b199bb6606f226fd5ec81",
+    "tools/open_v4_runtime.py": "7156da55f9de8bc0420bffad6266af7bdc77dfa00496f6e480b05b3f3cb1a30a",
+    "tools/evaluate_open_v4_search_budgets.py": "dde05baee6513d24129ca0ee4dce90fc1b54882e5134880c2fd1d7eca8e23a77",
+    "python/junqi_open_v4/pipeline.py": "9326051547671df1ef675b3253de8ffbd4b1a3490bbf5db32cbd96dc8f122d1a"
+  },
+  "authorization": "User explicitly authorized evaluating all proposed work, fixing duplicate trajectories and starting training after the previous batch stop. New branch only; old STOP markers and checkpoints remain preserved.",
+  "historical_stop_markers": [
+    "runs\\open_junqi_v4_actor_refresh_20261004\\STOP",
+    "runs\\open_junqi_v4_fresh_continuation\\supervision\\STOP",
+    "runs\\open_junqi_v4_repair_pilot\\supervision\\STOP"
+  ],
+  "stop_paths": [
+    "runs/open_junqi_v4_self_training_20261004_022812/STOP",
+    "runs/open_junqi_v4_self_training_20261004_022812/supervision/STOP"
+  ],
+  "evaluation_seed": 2026100409,
+  "screen_families": 16,
+  "full_families": 64,
+  "evaluation_budget": 256,
+  "search_diagnostic_positions": 48,
+  "collection_start": 61,
+  "stages_per_block": 6,
+  "maximum_stages": 12,
+  "games_per_stage": 256,
+  "updates_per_stage": 64,
+  "replay_stages": 3,
+  "control": {
+    "selfplay_fraction": 0.25,
+    "teacher_selfplay_fraction": null,
+    "actor_policy_target": "teacher",
+    "deduplicate": false,
+    "neural_policy_only": false
+  },
+  "candidate": {
+    "selfplay_fraction": 0.4,
+    "teacher_selfplay_fraction": 0.1,
+    "actor_policy_target": "search",
+    "deduplicate": true,
+    "neural_policy_only": true
+  },
+  "collector": "Both experimental branches use their immediately preceding complete learner; no production role adoption from collection alone.",
+  "hypothesis": "A self-improvement data package: all eligible Policy targets come from neural search, teacher turns are Value data, exact full trajectories deduplicated, more neural selfplay. Multiple package components vary; this experiment tests the package, not single-component causality.",
+  "screen_rule": "Fixed16 families; no promotion. Expand only when both teacher mean deltas over parent and control are positive and both direct mean scores exceed0.5. Screening may miss a real gain; failed screening means unconfirmed, not proven regression.",
+  "promotion_rule": "Unchanged full64 primary: both teacher paired CI95 lower>0 over parent and matched control, both direct CI95 lower>0.5, duplicate-parent point delta<=0.02, original full Champion gate. Never lower thresholds or use final layouts.",
+  "failure_policy": "Stop for review at first unconfirmed block; no blind extension, retries or fallback weight adoption.",
+  "validation_policy": "Training-family internal holdout monitoring only. Development/final trajectories never enter replay; final layouts unused."
+}

@@ -1,0 +1,329 @@
+"""One-GPU, complete-state, matched data-package experiment and guarded training.
+
+Heavy imports stay inside main so spawned CPU teachers do not initialize Torch.
+No old STOP is removed. Resume requires an explicit reviewed invocation.
+"""
+from __future__ import annotations
+import argparse
+import copy
+import hashlib
+import json
+import os
+from contextlib import ExitStack
+from pathlib import Path
+
+
+def screening_signal(gains, duels):
+    return (len(gains) == 2 and all(len(rows) == 2 and all(r["mean"] > 0 for r in rows) for rows in gains)
+            and len(duels) == 2 and all(row["mean"] > .5 for row in duels))
+
+
+def ordered_participants(participants):
+    # promotion_decision consumes parent-to-candidate paired deltas. The arena
+    # emits pairs in matchup order, so the baseline must precede the candidate.
+    order = ("parent", "control", "candidate", "repeat")
+    if set(participants) != set(order):
+        raise ValueError("parent/control/candidate/repeat participants required")
+    return {name: participants[name] for name in order}
+
+
+def main():
+    from open_v4_runtime import atomic_json, read_json, utc_now, ProcessLock, supervision_status
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--plan", required=True)
+    parser.add_argument("--resume", action="store_true")
+    parser.add_argument("--status", action="store_true")
+    parser.add_argument("--check-only", action="store_true")
+    args = parser.parse_args()
+    root = Path(__file__).resolve().parents[1]
+    def inside(name):
+        path = (root / name).resolve()
+        if not path.is_relative_to(root) or path == root: raise ValueError("path outside alphazero")
+        return path
+    plan_path = inside(args.plan); plan = read_json(plan_path)
+    directory = inside(plan["directory"])
+    if args.status:
+        snapshot = supervision_status(directory)
+        snapshot["stop_requested"] = any(inside(p).exists() for p in plan["stop_paths"])
+        print(json.dumps(snapshot, ensure_ascii=False)); return
+    import numpy as np
+    import torch
+    from fork_open_v4_qualified import fork_payload
+    from run_open_v4_fresh_data import is_holdout
+    from run_open_v4_search_training import verify_learning_state, route_signal
+    from open_v4_experiment_evidence import teacher_deltas
+    from evaluate_open_v4_search_budgets import StopAwareSearch
+    from junqi_az.model import PolicyValueNet
+    from junqi_open_v4.config import OpenConfig
+    from junqi_open_v4.learner import atomic_checkpoint, model_hash
+    from junqi_open_v4.games import collect_training_games
+    from junqi_open_v4.training_replay import replay_pools, make_self_training_learner
+    from junqi_open_v4.layouts import MultiLayoutBackend, load_role
+    from junqi_open_v4.teachers import TeacherLeague
+    from junqi_open_v4.arena import run_arena, select_families
+    from junqi_open_v4.pipeline import promotion_decision, validation_metrics
+    from junqi_search_v3.loop import read_selfplay_shard, write_selfplay_shard
+    from junqi_search_v3.search import BatchedNeuralPUCT
+    sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+    if plan["schema"] != "junqi-self-training-plan-1": raise ValueError("plan contract mismatch")
+    base = OpenConfig.load(inside(plan["parent_config"]))
+    stops = [inside(p) for p in plan["stop_paths"]]
+    def verify():
+        for name, digest in plan["source"].items():
+            if sha(inside(name)) != digest: raise ValueError(f"executed source changed: {name}")
+        if sha(inside(plan["parent_config"])) != plan["parent_config_sha256"]: raise ValueError("base config changed")
+        if sha(inside(base.layout_directory) / "manifest.json") != plan["layout_manifest_hash"]: raise ValueError("layouts changed")
+        if sha(inside(plan["suite"]["path"])) != plan["suite"]["sha256"]: raise ValueError("dev suite changed")
+        for frozen in plan["frozen_runs"]:
+            if sha(inside(frozen["directory"]) / "CURRENT.json") != frozen["current_sha256"]: raise ValueError("archived roles changed")
+        for item in plan["participants"].values():
+            if sha(inside(item["path"])) != item["sha256"]: raise ValueError("frozen complete checkpoint changed")
+    if any(p.exists() for p in stops): raise RuntimeError("STOP requested; never clear automatically")
+    with ExitStack() as locks:
+        for frozen in plan["frozen_runs"]:
+            for name in ("SUPERVISOR", "TRAINING"):
+                locks.enter_context(ProcessLock(inside(frozen["directory"]) / f"supervision/{name}.lock"))
+        verify()
+        source = torch.load(inside(plan["source_checkpoint"]["path"]), map_location="cpu", weights_only=False)
+        for field in ("model", "optimizer", "scheduler", "counters", "rng", "config", "leaf_value_scale"):
+            if field not in source: raise ValueError("incomplete learning state")
+        if source["counters"] != plan["source_counters"] or source["config"]["model"] != base.as_dict()["model"]:
+            raise ValueError("qualified parent counters or architecture changed")
+        configs = {}
+        for variant in ("control", "candidate"):
+            cfg = copy.deepcopy(base); params = plan[variant]
+            cfg.run_directory = str((directory / variant).relative_to(root))
+            cfg.initial_checkpoint = plan["source_checkpoint"]["path"]
+            for key in ("selfplay_fraction", "teacher_selfplay_fraction", "actor_policy_target"):
+                setattr(cfg, key, params[key])
+            cfg.games_per_iteration = plan["games_per_stage"]; cfg.updates_per_iteration = plan["updates_per_stage"]
+            cfg.validate(); configs[variant] = cfg
+            migrated = fork_payload(source, cfg, {"plan": str(plan_path.relative_to(root)), "variant": variant,
+                                                "source": plan["source_checkpoint"], "optimizer_reset": False})
+            verify_learning_state(source, migrated)
+        if args.check_only:
+            print(json.dumps({"valid": True, "full_seed_state_preserved": True,
+                              "historical_stops_preserved": plan["historical_stop_markers"]})); return
+        if directory.exists() != args.resume: raise ValueError("fresh branch or explicit --resume required")
+        directory.mkdir(parents=True, exist_ok=True)
+        for name in ("SUPERVISOR", "TRAINING"):
+            locks.enter_context(ProcessLock(directory / f"supervision/{name}.lock"))
+        status = dict(schema=plan["schema"], state="checking", pid=os.getpid(), started_at=utc_now(),
+                      plan=str(plan_path.relative_to(root)), new_training_games=0, completed_updates=0)
+        def update(**values):
+            status.update(values, updated_at=utc_now())
+            atomic_json(directory / "supervision/STATUS.json", status)
+            atomic_json(directory / "STATUS.json", status)
+        def check():
+            if any(p.exists() for p in stops):
+                update(state="stopped_by_user", review_required=False)
+                raise RuntimeError("STOP requested; complete checkpoints preserved")
+        proof = {"plan_sha256": sha(plan_path), "source": plan["source"]}
+        if args.resume:
+            if read_json(directory / "CONTRACT.json") != proof: raise ValueError("resume contract changed")
+            progress = read_json(directory / "PROGRESS.json")
+        else:
+            atomic_json(directory / "CONTRACT.json", proof)
+            progress = {"variants": {}, "collections": {"control": [], "candidate": []}, "evaluations": {},
+                        "source": plan["source_checkpoint"], "champion": plan["source_checkpoint"]}
+            for variant, cfg in configs.items():
+                migrated = fork_payload(source, cfg, {"plan": str(plan_path.relative_to(root)),
+                    "variant": variant, "source": plan["source_checkpoint"], "optimizer_reset": False})
+                path = directory / variant / "checkpoints/learner_stage_000000.pt"
+                atomic_checkpoint(path, migrated); atomic_json(path.parents[1] / "config.json", cfg.as_dict())
+                progress["variants"][variant] = {"stage": 0, "checkpoint": str(path.relative_to(root)),
+                    "sha256": sha(path), "model_hash": migrated["model_hash"], "counters": migrated["counters"]}
+            seed_champion = directory / "champions/champion_000026.pt"
+            atomic_checkpoint(seed_champion, source)
+            progress["champion"] = {"path": str(seed_champion.relative_to(root)),
+                "sha256": sha(seed_champion), "model_hash": source["model_hash"], "iteration": 26}
+            atomic_json(directory / "PROGRESS.json", progress)
+        def commit(): atomic_json(directory / "PROGRESS.json", progress)
+        def publish_current():
+            candidate = progress["variants"]["candidate"]
+            learner_record = dict(candidate, path=str(inside(candidate["checkpoint"]).relative_to(directory)),
+                                  iteration=candidate["counters"]["iteration"])
+            champion = progress["champion"]
+            champion_record = dict(champion, path=str(inside(champion["path"]).relative_to(directory)))
+            atomic_json(directory / "CURRENT.json", {"iteration": candidate["counters"]["iteration"],
+                "learner": learner_record, "champion": champion_record, "actor": champion_record,
+                "experimental_collectors": progress["variants"]})
+        publish_current()
+        device = torch.device(base.device); torch.set_num_threads(base.workers)
+        def search(model):
+            return StopAwareSearch(BatchedNeuralPUCT(model, device=device, inference_batch_size=base.inference_batch_size,
+                cache_size=base.cache_size, leaves_per_tree=base.leaves_per_tree), check)
+        def load_model(item):
+            if sha(inside(item["path"])) != item["sha256"]: raise ValueError("arena weights changed")
+            saved = torch.load(inside(item["path"]), map_location="cpu", weights_only=False)
+            model = PolicyValueNet(base.model).to(device).eval(); model.load_state_dict(saved["model"])
+            model.search_v3_leaf_value_scale = saved["leaf_value_scale"]
+            if model_hash(model) != item["model_hash"]: raise ValueError("arena tensor digest changed")
+            return model
+        suite = read_json(inside(plan["suite"]["path"]))["states"]
+        def evaluate(name, participants, families, teachers):
+            check(); verify()
+            participants = ordered_participants(participants)
+            if name in progress["evaluations"]:
+                record = progress["evaluations"][name]
+                if sha(inside(record["path"])) != record["sha256"]: raise ValueError("committed arena changed")
+                return read_json(inside(record["path"]))
+            selected = select_families(suite, families, plan["evaluation_seed"])
+            models = {key: load_model(item) for key, item in participants.items()}
+            agents = {key: search(model) for key, model in models.items()}
+            matchups = [("candidate", "parent"), ("candidate", "control")] + [
+                (key, f"teacher{i}") for i in range(len(teachers.modules)) for key in models]
+            update(state="arena", arena=name, planned_games=2 * len(selected) * len(matchups), evaluation_families=families)
+            arena = run_arena(selected, matchups, agents, teachers, {key: plan["evaluation_budget"] for key in agents},
+                              seed=plan["evaluation_seed"])
+            arena["checkpoints"] = participants
+            gains = {key: teacher_deltas(arena, before, after) for key, before, after in (
+                ("parent", "parent", "candidate"), ("control", "control", "candidate"), ("duplicate", "parent", "repeat"))}
+            gate = promotion_decision(arena, base)
+            duels = [row["family_score"] for row in arena["summaries"][:2]]
+            arena["review"] = {"gains": gains, "gate": gate,
+                "screen_promising": screening_signal([gains["parent"], gains["control"]], duels),
+                "route_confirmed": route_signal([gains["parent"], gains["control"]], gains["duplicate"], duels, gate, families, .02),
+                "screen_only": families < 64}
+            path = directory / "arena" / f"{name}.json"; atomic_json(path, arena)
+            progress["evaluations"][name] = {"path": str(path.relative_to(root)), "sha256": sha(path), "review": arena["review"]}
+            commit(); return arena
+        def read_shard(item):
+            path = inside(item["path"]); meta_path = inside(item["metadata"])
+            if sha(path) != item["sha256"] or sha(meta_path) != item["metadata_sha256"]: raise ValueError("replay changed")
+            meta = read_json(meta_path)
+            if meta["layout_role"] != "train" or meta["shard_sha256"] != item["sha256"]: raise ValueError("nontraining replay")
+            rows = read_selfplay_shard(path)
+            for row in rows: row.observation = row.observation.astype(np.float16)
+            return rows, meta
+        update()
+        try:
+            train_rows = load_role(inside(base.layout_directory), "train")
+            backend = MultiLayoutBackend(train_rows, base.seed)
+            with TeacherLeague(root, base.teacher_candidates, base.workers) as teachers:
+                if teachers.provenance != plan["teachers"]: raise ValueError("teacher identity changed")
+                original_submit = teachers.submit_actions
+                def checked_submit(states, ids): check(); return original_submit(states, ids)
+                teachers.submit_actions = checked_submit
+                # Reuse trained weights; do not restart the stopped historical run.
+                if not progress.get("refresh_review_complete"):
+                    screen = evaluate("actor_refresh_screen", plan["participants"], plan["screen_families"], teachers)
+                    if screen["review"]["screen_promising"]:
+                        evaluate("actor_refresh_full", plan["participants"], plan["full_families"], teachers)
+                    progress["refresh_review_complete"] = True; commit()
+                if not progress.get("search_diagnostic"):
+                    update(state="search_diagnostic")
+                    model = load_model(plan["source_checkpoint"]); states, descriptors = [], []
+                    seen = set()
+                    for item in plan["initial_replay"]:
+                        meta = read_json(inside(item["metadata"]))
+                        if meta["layout_role"] != "train": raise ValueError("diagnostic must use train positions")
+                        for game in meta["games"]:
+                            if game["mode"] != "selfplay" or game["family"] in seen or is_holdout(game["family"], base.seed): continue
+                            seen.add(game["family"])
+                            for ply in (0, 24, 48):
+                                if ply >= len(game["trace"]): continue
+                                state = backend.new_state(game["provenance"]["setup_seed"])
+                                if list(state.native_state.board()) != game["provenance"]["initial_board"]: raise ValueError("training start differs")
+                                for action in game["trace"][:ply]: state.apply(action)
+                                if state.is_terminal(): raise ValueError("diagnostic prefix terminal")
+                                states.append(state); descriptors.append({"family": game["family"], "ply": ply})
+                                if len(states) >= plan["search_diagnostic_positions"]: break
+                            if len(states) >= plan["search_diagnostic_positions"]: break
+                        if len(states) >= plan["search_diagnostic_positions"]: break
+                    results, metrics = {}, {}
+                    for budget in (64, 256): results[budget], metrics[budget] = search(model).search(states, budget)
+                    diagnostic = {"role": "train", "positions": descriptors, "metrics": metrics,
+                        "action_agreement": float(np.mean([a.action == b.action for a, b in zip(results[64], results[256])])),
+                        "mean_entropy": {str(b): float(np.mean([r.root_entropy for r in results[b]])) for b in results},
+                        "conclusion": "Same frozen weights and history-complete train positions; descriptive target diagnostic only, not a causal proof or strength gate. Training stays64/128."}
+                    path = directory / "SEARCH_DIAGNOSTIC.json"; atomic_json(path, diagnostic)
+                    progress["search_diagnostic"] = {"path": str(path.relative_to(root)), "sha256": sha(path)}; commit()
+                    del model, results, states
+                validation = []
+                for item in plan["initial_replay"]:
+                    samples, _ = read_shard(item)
+                    validation.extend(s for s in samples if is_holdout(s.game_id, base.seed))
+                validation = validation[:4096]
+                for stage in range(1, plan["maximum_stages"] + 1):
+                    for variant in ("control", "candidate"):
+                        old = progress["variants"][variant]
+                        if old["stage"] >= stage: continue
+                        check(); verify(); cfg = configs[variant]; params = plan[variant]
+                        if sha(inside(old["checkpoint"])) != old["sha256"]: raise ValueError("committed learner changed")
+                        learner = make_self_training_learner(cfg, root); learner.resume(inside(old["checkpoint"]))
+                        collection = next((r for r in progress["collections"][variant] if r["stage"] == stage), None)
+                        if collection is None:
+                            update(state="collecting", variant=variant, stage=stage, collector_model_hash=old["model_hash"])
+                            learner.model.eval()
+                            samples, meta = collect_training_games(cfg, learner.model, device, backend, teachers,
+                                plan["collection_start"] + stage - 1, check_stop=check)
+                            meta.update(actor_model_hash=old["model_hash"], actor_checkpoint=old,
+                                        policy_eligibility="neural_search_only" if params["neural_policy_only"] else "all")
+                            path = directory / variant / "replay" / f"collection_{stage:06d}.npz"
+                            write_selfplay_shard(path, samples); meta["shard_sha256"] = sha(path)
+                            atomic_json(path.with_suffix(".json"), meta)
+                            collection = {"stage": stage, "path": str(path.relative_to(root)), "sha256": sha(path),
+                                "metadata": str(path.with_suffix(".json").relative_to(root)), "metadata_sha256": sha(path.with_suffix(".json"))}
+                            progress["collections"][variant].append(collection); commit(); del samples
+                        meta = read_json(inside(collection["metadata"]))
+                        records = (plan["initial_replay"] + progress["collections"][variant])[-plan["replay_stages"]:]
+                        shards = [read_shard(item) for item in reversed(records)]
+                        values, policy, audit = replay_pools(shards, deduplicate=params["deduplicate"],
+                            neural_policy_only=params["neural_policy_only"], holdout=lambda family: is_holdout(family, base.seed))
+                        update(state="training", variant=variant, stage=stage, replay_audit=audit)
+                        original_step = learner.step
+                        def checked_step(*a, **kw): check(); return original_step(*a, **kw)
+                        learner.step = checked_step
+                        updates = learner.train_pools(values, policy, updates=plan["updates_per_stage"])
+                        learner.counters["iteration"] += 1
+                        checkpoint = directory / variant / "checkpoints" / f"learner_stage_{stage:06d}.pt"
+                        payload = learner.payload(role="learner", lineage={"plan": str(plan_path.relative_to(root)),
+                            "previous": old, "replay": records, "data_package": params})
+                        atomic_checkpoint(checkpoint, payload)
+                        report = {"stage": stage, "variant": variant, "counters": learner.counters,
+                            "replay_audit": audit, "actual_policy_batch_sources": dict(learner.policy_batch_sources),
+                            "updates": updates, "internal_holdout": validation_metrics(learner.model, validation, device),
+                            "collection_metrics": {k: meta[k] for k in ("moves_per_second", "simulations_per_second", "mean_inference_batch", "elapsed_seconds", "reasons")} if collection["stage"] == stage else {},
+                            "peak_gpu_allocated_mib": torch.cuda.max_memory_allocated() / 2**20}
+                        report_path = directory / variant / "reports" / f"stage_{stage:06d}.json"; atomic_json(report_path, report)
+                        progress["variants"][variant] = {"stage": stage, "checkpoint": str(checkpoint.relative_to(root)),
+                            "sha256": sha(checkpoint), "model_hash": payload["model_hash"], "counters": payload["counters"],
+                            "report": str(report_path.relative_to(root)), "report_sha256": sha(report_path)}
+                        commit()
+                        publish_current()
+                        update(completed_updates=sum(v["counters"]["effective_updates"] - source["counters"]["effective_updates"] for v in progress["variants"].values()),
+                            new_training_games=sum(len(v) for v in progress["collections"].values()) * plan["games_per_stage"])
+                        del learner, values, policy, shards, payload; check()
+                    if stage % plan["stages_per_block"]: continue
+                    participants = {name: {"path": progress["variants"][name]["checkpoint"],
+                        "sha256": progress["variants"][name]["sha256"], "model_hash": progress["variants"][name]["model_hash"]}
+                        for name in ("candidate", "control")}
+                    participants["parent"] = progress["champion"]; participants["repeat"] = participants["parent"]
+                    screen = evaluate(f"block_{stage:06d}_screen", participants, plan["screen_families"], teachers)
+                    full = (evaluate(f"block_{stage:06d}_full", participants, plan["full_families"], teachers)
+                            if screen["review"]["screen_promising"] else None)
+                    confirmed = full is not None and full["review"]["route_confirmed"]
+                    atomic_json(directory / f"BLOCK_{stage:06d}_RESULTS.json", {"screen": screen["review"],
+                        "full": full["review"] if full else None, "route_confirmed": confirmed,
+                        "interpretation": "Package comparison, not single-factor causal attribution."})
+                    if not confirmed:
+                        update(state="review_due", review_required=True, route_confirmed=False,
+                               reason="external_gain_unconfirmed; stop_without_blind_extension"); return
+                    item = participants["candidate"]
+                    promoted = torch.load(inside(item["path"]), map_location="cpu", weights_only=False)
+                    promoted["role"] = "champion"
+                    promoted["lineage"]["qualification"] = progress["evaluations"][f"block_{stage:06d}_full"]
+                    path = directory / "champions" / f"champion_{26 + stage:06d}.pt"
+                    atomic_checkpoint(path, promoted)
+                    progress["champion"] = {"path": str(path.relative_to(root)), "sha256": sha(path),
+                        "model_hash": item["model_hash"], "iteration": 26 + stage}; commit()
+                    publish_current()
+                    update(state="qualified", route_confirmed=True, champion_iteration=26 + stage)
+            update(state="segment_complete", review_required=True)
+        except BaseException as error:
+            if status["state"] != "stopped_by_user": update(state="needs_attention", reason=repr(error), review_required=True)
+            raise
+
+
+if __name__ == "__main__": main()

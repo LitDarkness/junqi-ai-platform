@@ -1,0 +1,8 @@
+{
+  "extends": "open_junqi_search_v3_alternating.json",
+  "run_directory": "runs/open_junqi_search_v3_scaled_training",
+  "initialization": "strength_incumbent",
+  "loop": {
+    "iterations": 100
+  }
+}

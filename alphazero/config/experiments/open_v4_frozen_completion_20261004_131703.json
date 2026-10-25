@@ -1,0 +1,206 @@
+{
+  "schema": "junqi-frozen-completion-plan-1",
+  "registered_at": "2026-10-04T13:17:04.434681+00:00",
+  "directory": "runs/open_junqi_v4_frozen_completion_20261004_131703",
+  "original_plan": {
+    "path": "config\\experiments\\open_v4_long_behavior_20261004_081501.json",
+    "sha256": "7dd44da34d5927bbb65113a329a846dbc5d09d334b2c212402e9711ed5c2cf07"
+  },
+  "cached_arena": {
+    "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\arena\\block_000012_full.json",
+    "sha256": "ee40c38fc77a14acdf1e193dcc9549bd484b331e244b62b31a75abead3afbb2a"
+  },
+  "frozen_files": [
+    {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\CURRENT.json",
+      "sha256": "ea8067971cd76158187e2837cb5c4a6ed09896f79fc6324f5b9021f8496faf13"
+    },
+    {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\PROGRESS.json",
+      "sha256": "552689b863b1c3b486ab387db98373458ca46d1e4bcb45e27d4b91a5c9fe4f46"
+    },
+    {
+      "path": "config\\experiments\\open_v4_long_behavior_base_20261004_081501.json",
+      "sha256": "819a503ce6e4627ce9ddc068e0fd6d9b1202fda88699d5e5df4d5ec41a7f3af4"
+    },
+    {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\development\\suite.json",
+      "sha256": "94bd9a038b6dd2652e4f5bbfd1bb7021e785d745ba1877f01fbdd880fdd3b88e"
+    },
+    {
+      "path": "config\\layouts\\open_v4\\manifest.json",
+      "sha256": "0285d27b62da8e3ce215a8d9b64581b1de7f759d27edfeff2dfbe923ca7bdf20"
+    },
+    {
+      "path": "runs\\open_junqi_v4_dedup_factor_20261004_035152\\CURRENT.json",
+      "sha256": "a9f448b91067bde4fd0cdd2a245736771f7df21c93ba788ed6253e87514a4774"
+    },
+    {
+      "path": "runs\\open_junqi_v4_exploration_factor_20261004_055403\\CURRENT.json",
+      "sha256": "528344cec666c4ad3173c36badbbd67514ba637bdaff9c65a42e4952a99cc8ac"
+    },
+    {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\CURRENT.json",
+      "sha256": "8b26457a79f6431864dfcfe2b64a6d78e2777dcb175a23baa0d5883c0940237c"
+    },
+    {
+      "path": "runs\\open_junqi_v4_policy_anchor_factor_20261004_042349\\CURRENT.json",
+      "sha256": "1e49ee8f4e726fbd38a19f45cf84c8501a44f1d378afb6093114634edaa6155f"
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\CURRENT.json",
+      "sha256": "0b47d7e6ad6196d706735b114baaaf233a6d0e155d41c6d5f3fa0d4b81ea9e8b"
+    },
+    {
+      "path": "runs\\open_junqi_v4_self_training_20261004_023128\\CURRENT.json",
+      "sha256": "b8ac0f07ba714027f0daac19fe64ed71c1919fca2d5ab6f585426c3976911c9b"
+    },
+    {
+      "path": "runs\\open_junqi_v4_tactical_training_20261004_065605\\CURRENT.json",
+      "sha256": "a385c2c6f32f53b090e4bdf748c2830595937a2761948fde9352e9f99265a659"
+    },
+    {
+      "path": "runs\\open_junqi_v4_teacher_history_factor_20261004_052542\\CURRENT.json",
+      "sha256": "5e21038f4ef1e95e8e4a83d14e0fa02737afd95e12665af02acd82519d80f2fa"
+    },
+    {
+      "path": "runs\\open_junqi_v4_actor_refresh_20261004\\STOP",
+      "sha256": "e8c684ad1c95fa90104bea4b33e429ea7023dd4dfa6e296cfa3a8d682213b301"
+    },
+    {
+      "path": "runs\\open_junqi_v4_fresh_continuation\\supervision\\STOP",
+      "sha256": "ccc2a043dc2ecaec4b3962bf8f6ab567680c0ccecad257e0f7896dd5364e0cd5"
+    },
+    {
+      "path": "runs\\open_junqi_v4_repair_pilot\\supervision\\STOP",
+      "sha256": "b711d1104a45c50e3490496437fe9ff0155741317bae9881f2cd6fbbe0da98d4"
+    },
+    {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\STOP",
+      "sha256": "fb9bb046a88db55c0829d2797b85d77b2419e7411bac60a999a9232f32c6d77f"
+    },
+    {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\supervision\\STOP",
+      "sha256": "fb9bb046a88db55c0829d2797b85d77b2419e7411bac60a999a9232f32c6d77f"
+    }
+  ],
+  "source": {
+    "build/JunqiAZ.cp310-win_amd64.pyd": "18e86e9cc5db416c72c44d4aaa019f05218aa95f9326ae10153c68b370f9b528",
+    "cpp/az_state.cpp": "f3b36aab1199fbe6f672b646762b8b86843605c36a80143c65bf3de4b06fc732",
+    "cpp/az_state.h": "d18d1d320bf9fed223932dad30ff694b3c9f666b58829a981d0aba4f50dfed9b",
+    "cpp/junqi_az_bindings.cpp": "456d781893f5bea175bd90056abc6ef1aec7e854de9ee0ff7b34bc7a14798215",
+    "cpp/neural_puct.cpp": "6aac0da12e68da0072a049e0ff6c454d300b713c10bf6420458ec862c20bb5d9",
+    "cpp/neural_puct.h": "3cc545192d3bca1c09ec2a1f664fd9dc4ff20ded5425e931f3a9912b5c066876",
+    "python/junqi_az/model.py": "7c3107408245e62ed4a97433e779f6d0cb2c4d084dc6bda67104edb2d7befaa7",
+    "python/junqi_open_v4/arena.py": "8a2a2e01b5bd420b085d178befee94f81d86dd2ae24189ef07f25656de0f2c62",
+    "python/junqi_open_v4/config.py": "77c8a06e0024cb7ab06259003e31eb47bdf45962b293804e00d41cf3c7a48e56",
+    "python/junqi_open_v4/games.py": "58dad58ef18051a48773d342108469b946d31be3c9d96f86557db1d450a5d553",
+    "python/junqi_open_v4/layouts.py": "dbf9888eaa4c877870ddd8409fc82da2a2529ae64672ea4133037ca10d9f2332",
+    "python/junqi_open_v4/learner.py": "ef5a182a6a77051497b486d8e4f80069e71b6c5c689869cce29b757dda261a07",
+    "python/junqi_open_v4/pipeline.py": "9326051547671df1ef675b3253de8ffbd4b1a3490bbf5db32cbd96dc8f122d1a",
+    "python/junqi_open_v4/teachers.py": "7fded99345006425cc04ce332214cd7d6cba4c181e4ab5dea920a2d9bf5a29d5",
+    "python/junqi_open_v4/training_replay.py": "db4b3357b457e34897a5f2815b955932be3352293adc9c8b22b79a7ccfa69227",
+    "python/junqi_search_v3/loop.py": "30b19b9b3caa280219447f135d72f9f6e30018bfb9851c84ca1a5392c2b5df72",
+    "python/junqi_search_v3/search.py": "004db7b2ab1735c42f98ace3d3cabbdf3b74e31d730baa80980c49ba44195041",
+    "start_open_v4_long_behavior.ps1": "715b56fafd7d2fd7a2094e834d954d36a8665cb25d4188dc8293a9bdd28f1a63",
+    "tests/test_open_v4_long_behavior.py": "8075663bb1c2ea5eb4d8c476cf79e3ac039cd63e2ee5174a1c3f534cf8c44db0",
+    "tools/evaluate_open_v4_search_budgets.py": "dde05baee6513d24129ca0ee4dce90fc1b54882e5134880c2fd1d7eca8e23a77",
+    "tools/fork_open_v4_qualified.py": "6ed4f4566f445f129c5a16784f527c3360fdaea1751b90c18c18447cb5b34e3f",
+    "tools/open_v4_experiment_evidence.py": "a94ae30371e981b88ab2f4fe9fb397fb92c729dc447b199bb6606f226fd5ec81",
+    "tools/open_v4_runtime.py": "7156da55f9de8bc0420bffad6266af7bdc77dfa00496f6e480b05b3f3cb1a30a",
+    "tools/prepare_open_v4_long_behavior.py": "d3ae9eefc23818c48bdf35ac7f0d58704f002a7a68f92a597076ca0beefecdff",
+    "tools/prepare_open_v4_tactical_training.py": "7596bd7cc2439a6128c92329692b9f3b49cd18957083e23b9bf689251d7ba5c4",
+    "tools/run_open_v4_long_behavior.py": "fd83a1b6f0f8f0827e28bad9e2af104c56f3d1e11648444f63fb1909f7b4f59d",
+    "tools/run_open_v4_search_training.py": "c528b62640ae85f7e6d04f358032959118131a94f7b348dc277debfa54d300f7",
+    "tools/run_open_v4_tactical_training.py": "951702076294768fcdd7e0bd5df156d699561e24ece3632a0628ac17f4f4e87b",
+    "tools/open_v4_cached_arena.py": "cd1d83df9e7f8fbc90e98d99178aa79a4753dfd9447d546459e57b6e21f8cb1a",
+    "tools/run_open_v4_frozen_completion.py": "9c3cd8e511e359663066d143a5728edba70d437de95360942582a8a4151af468",
+    "tools/prepare_open_v4_frozen_completion.py": "6b55526dd78d2e1a83fbdad7c692e83e5d8004e27319012ae908ea2c2e92ac75",
+    "start_open_v4_frozen_completion.ps1": "6cfd58d6044711da82989670ffa92a6c2947bb8817b55bf6f740bf47d1b4890b",
+    "tests/test_open_v4_cached_arena.py": "21a86cb529db4e82138654c94b7868632c44a344836587d230b401eb6781bca5"
+  },
+  "participants": {
+    "champion": {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\champions\\champion_seed.pt",
+      "sha256": "ec539bed4e112d28707adaef5b75c0c493b034e0c037f020c57fed9f6c447041",
+      "model_hash": "ad3d6e81daa75bb27738e259642903e7d95298ffa64ccb90a4482bd3b5ee4c9c",
+      "iteration": 26,
+      "leaf_value_scale": 0.9076346023345448
+    },
+    "parent": {
+      "path": "runs\\open_junqi_v4_tactical_training_20261004_065605\\control\\checkpoints\\learner_stage_000006.pt",
+      "sha256": "cc97ec996c2ca856bf81f2d18327afdcdea53f213d0cfc8def3414929c69bf8f",
+      "model_hash": "583dd9ca60e409c9ba7260d9dd6434f42bd91096771e49122a0f0cb43d271f29",
+      "iteration": 38,
+      "leaf_value_scale": 0.9076346023345448
+    },
+    "control": {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\control\\checkpoints\\learner_stage_000024.pt",
+      "sha256": "0631c0926fdac7bf15dae80cd863c5c87a89910386c461c8a0b75fc818cf389a",
+      "model_hash": "faa39734bbb852d8f2bd87df1c160af79983a9971080fb6675554f472624407a",
+      "iteration": 62,
+      "leaf_value_scale": 0.9076346023345448
+    },
+    "candidate": {
+      "path": "runs\\open_junqi_v4_long_behavior_20261004_081501\\candidate\\checkpoints\\learner_stage_000024.pt",
+      "sha256": "94d7c58799a5b1c3a5f42fa195f73bbc8927983518ae287d756fcdfec288ca87",
+      "model_hash": "07a9fde1feb9c89264f57ba66f0fe48f388480271fd57c0c36e4e20eeb293535",
+      "iteration": 62,
+      "leaf_value_scale": 0.9076346023345448
+    },
+    "repeat": {
+      "path": "runs\\open_junqi_v4_tactical_training_20261004_065605\\control\\checkpoints\\learner_stage_000006.pt",
+      "sha256": "cc97ec996c2ca856bf81f2d18327afdcdea53f213d0cfc8def3414929c69bf8f",
+      "model_hash": "583dd9ca60e409c9ba7260d9dd6434f42bd91096771e49122a0f0cb43d271f29",
+      "iteration": 38,
+      "leaf_value_scale": 0.9076346023345448
+    }
+  },
+  "lock_directories": [
+    "runs\\open_junqi_v4_dedup_factor_20261004_035152",
+    "runs\\open_junqi_v4_exploration_factor_20261004_055403",
+    "runs\\open_junqi_v4_fresh_continuation",
+    "runs\\open_junqi_v4_policy_anchor_factor_20261004_042349",
+    "runs\\open_junqi_v4_repair_pilot",
+    "runs\\open_junqi_v4_self_training_20261004_023128",
+    "runs\\open_junqi_v4_tactical_training_20261004_065605",
+    "runs\\open_junqi_v4_teacher_history_factor_20261004_052542",
+    "runs/open_junqi_v4_long_behavior_20261004_081501"
+  ],
+  "stop_paths": [
+    "runs/open_junqi_v4_frozen_completion_20261004_131703/STOP",
+    "runs/open_junqi_v4_frozen_completion_20261004_131703/supervision/STOP"
+  ],
+  "inference_contract": {
+    "physical_batch": 32,
+    "precision": "BF16",
+    "padding": "repeat final input, discard padded outputs",
+    "root_noise": false,
+    "root_guard": false,
+    "budget": 256,
+    "historical_dynamic_batch_scores_not_same_compute_context": true
+  },
+  "engine_contract": {
+    "cpuct": 1.5,
+    "cache_size": 0,
+    "leaves_per_tree": 1,
+    "reuse_roots": false,
+    "cuda_graphs": false,
+    "physical_batch": 32,
+    "precision": "BF16",
+    "root_noise": false,
+    "root_guard": false,
+    "budget": 256
+  },
+  "authorization": "Latest user explicitly requested efficiency improvements and continued training. New independent directory only; paused original and its STOP markers remain frozen.",
+  "phase": "frozen_development_evaluation",
+  "new_training_games": 0,
+  "completed_updates": 0,
+  "planned_fresh_development_games": 2916,
+  "planned_reused_development_games": 1296,
+  "fallback_fresh_development_games": 4212,
+  "cache_rule": "Only immutable champion26/source38 teacher baselines, same full64 suite, seed, native rules, teacher bytes, full weights/Value scales, BF16 physical32 and exact search settings. Reaggregation reproduces all original intervals/gate. Before reuse, replay 648 actual fresh source38 games; all full traces and terminal reasons/results must match. Any mismatch disables cache and reruns all1296 baseline games. Old compute cost is not counted as fresh.",
+  "qualification": "Original full64 route and Champion gates unchanged: six teacher paired lower95>0 versus Champion/source/control, three direct lower95>.5, duplicate source drift<=.02, original production gate.082/084 related; no independent final claim.",
+  "next_action": "Review complete4212 raw records, fresh/cached provenance, source repeat and full states. If original62 route qualifies, preregister a new24-stage fresh continuation from qualified62,256new/64updates perstage with own preceding Learner, latest3 replay shards and frozen62 protection. If route unconfirmed, preserve evidence and audit old/new Value on saved training holdout, then preregister a different single major hypothesis using latest complete research62; do not automatically extend failed old factor or rewind26. No second GPU task while this job runs.",
+  "failure_policy": "STOP honored without clearing. If unexpected disappearance, confirm no lock owner and inspect last complete committed part and logs; at most one reviewed explicit resume with the same contract; repeated fault preserves evidence and stops."
+}

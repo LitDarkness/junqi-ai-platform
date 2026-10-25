@@ -1,0 +1,98 @@
+{
+  "schema": "junqi-advantage-rl-v2",
+  "lineage": "v2a",
+  "seed": 2026072401,
+  "device": "cuda",
+  "run_directory": "runs/fixed_layout_rl_v2a_advantage_single_layout",
+  "initialization_checkpoint": "runs/fixed_layout_rl_v1/checkpoints/archive/iteration_000040.pt",
+  "layouts": {
+    "set_path": "config/layouts/fixed_layout_evaluation_v1.json",
+    "training_ids": ["public_conservative_advance"],
+    "sealed_id": "",
+    "mirror_probability": 0.0
+  },
+  "model": {
+    "input_channels": 107,
+    "board_rows": 12,
+    "board_cols": 5,
+    "action_size": 3600,
+    "channels": 192,
+    "residual_blocks": 10,
+    "policy_channels": 64,
+    "auxiliary_targets": 0,
+    "repetition_context": true,
+    "value_head_type": "wdl",
+    "wdl_search_mix": 1.0,
+    "pairwise_action_bias": true
+  },
+  "teacher": {
+    "bootstrap_games": 512,
+    "bootstrap_train_steps": 400,
+    "workers": 16,
+    "softmax_temperatures": [0.7, 1.0, 1.5],
+    "uniform_mix": 0.05,
+    "external_vote_weight": 0.35,
+    "heuristic_value_scale": 25.0,
+    "external_candidates": [
+      "../teachers/084/candidate.py",
+      "../teachers/082/candidate.py"
+    ]
+  },
+  "selfplay": {
+    "games_per_iteration": 1024,
+    "parallel_games": 256,
+    "max_moves": 400,
+    "temperature": 0.9,
+    "minimum_temperature": 0.25,
+    "temperature_decay_iterations": 100,
+    "uniform_mix": 0.0,
+    "opponent_weights": {
+      "current": 0.25,
+      "historical": 0.25,
+      "heuristic_current": 0.20,
+      "heuristic_historical": 0.10,
+      "random": 0.10,
+      "aggressive": 0.10
+    }
+  },
+  "advantage": {
+    "gamma": 1.0,
+    "lambda_advantage": 0.5,
+    "lambda_outcome": 0.8,
+    "clip_epsilon": 0.2,
+    "old_policy_kl_weight": 0.1,
+    "magnet_alpha_initial": 0.05,
+    "magnet_alpha_exponent": 0.3,
+    "magnet_alpha_override": null,
+    "filter_percentile": 75.0,
+    "filter_min_absolute": 0.01,
+    "policy_epochs": 1
+  },
+  "train": {
+    "batch_size": 1024,
+    "learning_rate": 0.00005,
+    "minimum_learning_rate": 0.000005,
+    "weight_decay": 0.0001,
+    "max_gradient_norm": 0.5,
+    "schedule_iterations": 200,
+    "ema_smoothing": 0.999,
+    "value_epochs": 1,
+    "value_weight": 1.0,
+    "teacher_weight_initial": 0.30,
+    "teacher_weight_final": 0.0,
+    "teacher_anneal_iterations": 30,
+    "amp": true,
+    "amp_dtype": "bfloat16"
+  },
+  "evaluation": {
+    "enabled": true,
+    "interval": 5,
+    "games_per_match": 256,
+    "temperature": 0.25,
+    "seed": 2026072450
+  },
+  "checkpoints": {
+    "archive_interval": 5,
+    "recent_keep": 5
+  }
+}

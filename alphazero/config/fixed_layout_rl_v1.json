@@ -1,0 +1,105 @@
+{
+  "schema": "junqi-fixed-layout-rl-v1",
+  "seed": 2026072301,
+  "device": "cuda",
+  "run_directory": "runs/fixed_layout_rl_v1",
+  "layout": {
+    "set_path": "config/layouts/fixed_layout_v1.json",
+    "layout_id": "public_conservative_advance",
+    "mirror_probability": 0.0
+  },
+  "model": {
+    "input_channels": 107,
+    "board_rows": 12,
+    "board_cols": 5,
+    "action_size": 3600,
+    "channels": 192,
+    "residual_blocks": 10,
+    "policy_channels": 64,
+    "auxiliary_targets": 0,
+    "repetition_context": true,
+    "value_head_type": "wdl",
+    "wdl_search_mix": 1.0,
+    "pairwise_action_bias": true
+  },
+  "teacher": {
+    "bootstrap_games": 512,
+    "bootstrap_train_steps": 400,
+    "workers": 16,
+    "softmax_temperatures": [0.7, 1.0, 1.5],
+    "uniform_mix": 0.05,
+    "external_vote_weight": 0.35,
+    "heuristic_value_scale": 25.0,
+    "external_candidates": [
+      "../teachers/084/candidate.py",
+      "../teachers/082/candidate.py"
+    ]
+  },
+  "selfplay": {
+    "games_per_iteration": 1024,
+    "parallel_games": 256,
+    "max_moves": 400,
+    "policy_temperature": 0.9,
+    "temperature_decay_steps": 100000,
+    "minimum_temperature": 0.25,
+    "historical_keep": 8,
+    "opponent_weights": {
+      "current": 0.25,
+      "historical": 0.25,
+      "heuristic_current": 0.20,
+      "heuristic_historical": 0.10,
+      "random": 0.10,
+      "aggressive": 0.10
+    }
+  },
+  "replay": {
+    "teacher_directory": "replay_teacher",
+    "selfplay_directory": "replay_selfplay",
+    "capacity": 500000,
+    "shard_size": 4096,
+    "observation_dtype": "float16",
+    "cache_shards": 16,
+    "sample_shards_per_batch": 16
+  },
+  "train": {
+    "batch_size": 1024,
+    "steps_per_iteration": 200,
+    "learning_rate": 0.0002,
+    "minimum_learning_rate": 0.00001,
+    "weight_decay": 0.0001,
+    "value_weight": 1.0,
+    "entropy_start": 0.02,
+    "entropy_end": 0.002,
+    "kl_start": 0.05,
+    "kl_end": 0.005,
+    "rho_uniform_mix": 0.10,
+    "teacher_fraction_start": 0.70,
+    "teacher_fraction_end": 0.10,
+    "schedule_steps": 200000,
+    "gradient_clip": 5.0,
+    "amp": true,
+    "amp_dtype": "bfloat16",
+    "checkpoint_every_iterations": 1,
+    "log_every": 10
+  },
+  "checkpoint": {
+    "archive_interval": 5,
+    "recent_keep": 5,
+    "initial_champion_iteration": 10
+  },
+  "evaluation": {
+    "enabled": true,
+    "interval": 5,
+    "initial_games": 512,
+    "extended_games": 2048,
+    "reject_score": 0.52,
+    "direct_promote_score": 0.55,
+    "temperature": 0.25,
+    "mode": "sample",
+    "seed": 2026072309,
+    "crossplay_interval": 10,
+    "crossplay_games": 128,
+    "repetition_warning_fraction": 0.15,
+    "max_ply_warning_fraction": 0.10
+  }
+}
